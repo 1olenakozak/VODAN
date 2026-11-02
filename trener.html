@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Познайомтеся з тренерами басейну ВОДАН та оберіть індивідуальні або групові заняття.">
+    <title>Тренери — ВОДАН</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        theme: {
+          extend: {
+            colors: {
+              vodanBg: '#0A111E',
+              vodanCard: '#0D1B2A',
+              vodanAccent: '#00C2D1',
+              vodanText: '#F4F8FA',
+            },
+            fontFamily: {
+              sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+              heading: ['Montserrat', 'Segoe UI', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="trener.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header" id="home">
+        <a class="logo" href="index.html" aria-label="ВОДАН — на головну"><img src="assets/icons/logo.svg" alt="Логотип ВОДАН"></a>
+        <nav class="nav" aria-label="Головна навігація">
+            <a class="nav-item" href="index.html">Головна</a>
+            <details class="nav-dropdown">
+                <summary class="nav-item">Басейн <span aria-hidden="true">▾</span></summary>
+                <div class="dropdown-menu">
+                    <a class="dropdown-link" href="index.html#subscriptions">Абонементи</a>
+                    <a class="dropdown-link" href="rozklad.html">Розклад</a>
+                    <a class="dropdown-link" href="trener.html" aria-current="page">Тренери</a>
+                    <a class="dropdown-link" href="bron.html">Бронювання</a>
+                    <a class="dropdown-link" href="calculator.html">Розрахунок абонементу</a>
+                    <a class="dropdown-link" href="index.html#about">Про ВОДАН</a>
+                </div>
+            </details>
+            <a class="nav-item" href="spa.html">SPA</a>
+            <a class="nav-item" href="index.html#contacts">Контакти</a>
+        </nav>
+        <details class="mobile-nav">
+            <summary aria-label="Відкрити меню навігації">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </summary>
+            <nav aria-label="Мобільна навігація">
+                <a href="index.html">Головна</a>
+                <a href="index.html#subscriptions">Абонементи</a>
+                <a href="rozklad.html">Розклад</a>
+                <a href="trener.html" aria-current="page">Тренери</a>
+                <a href="bron.html">Бронювання</a>
+                <a href="spa.html">SPA</a>
+                <a href="calculator.html">Розрахунок абонементу</a>
+                <a href="index.html#about">Про ВОДАН</a>
+                <a href="index.html#contacts">Контакти</a>
+            </nav>
+        </details>
+        <button class="theme-switcher" type="button" aria-label="Змінити тему"></button>
+    </header>
+
+    <main class="main-content trainers-main">
+        <section class="trainers-intro" aria-labelledby="trainers-title">
+            <p class="trainers-eyebrow">Басейн ВОДАН</p>
+            <h1 class="trainers-title" id="trainers-title">Наші тренери</h1>
+            <p class="trainers-lead">Обирайте формат занять і тренера відповідно до ваших цілей та досвіду у воді.</p>
+        </section>
+
+        <section class="trainer-section" aria-labelledby="individual-title">
+            <h2 class="section-title" id="individual-title">Індивідуальні заняття з тренером</h2>
+            <div class="trainer-grid">
+                <article class="trainer-card">
+                    <figure class="trainer-photo">
+                        <img src="assets/images/trenerstepan.jpg" alt="Фото тренера Степана Гули">
+                    </figure>
+                    <div class="trainer-info">
+                        <h3 class="trainer-name">Степан Гула</h3>
+                        <dl class="trainer-facts">
+                            <div><dt>Для кого</dt><dd>Дорослі</dd></div>
+                            <div><dt>Напрям</dt><dd>Плавання</dd></div>
+                            <div><dt>Досвід</dt><dd>15 років</dd></div>
+                            <div><dt>Кваліфікація</dt><dd>Майстер спорту України</dd></div>
+                        </dl>
+                        <p class="trainer-description">Індивідуальні заняття з плавання для дорослих.</p>
+                    </div>
+                </article>
+
+                <article class="trainer-card">
+                    <figure class="trainer-photo">
+                        <img src="assets/images/trenerolha.jpg" alt="Фото тренерки Ольги Логовської">
+                    </figure>
+                    <div class="trainer-info">
+                        <h3 class="trainer-name">Ольга Логовська</h3>
+                        <dl class="trainer-facts">
+                            <div><dt>Для кого</dt><dd>Діти 4–12 років</dd></div>
+                            <div><dt>Напрям</dt><dd>Дитяче плавання</dd></div>
+                            <div><dt>Досвід</dt><dd>13 років</dd></div>
+                            <div><dt>Кваліфікація</dt><dd>Майстер спорту України</dd></div>
+                        </dl>
+                        <p class="trainer-description">Індивідуальні заняття з плавання для дітей.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="trainer-section" aria-labelledby="group-title">
+            <h2 class="section-title" id="group-title">Групові заняття</h2>
+            <div class="trainer-grid">
+                <article class="trainer-card">
+                    <figure class="trainer-photo">
+                        <img src="assets/images/trenertaras.jpg" alt="Фото тренера Тараса Сороки">
+                    </figure>
+                    <div class="trainer-info">
+                        <h3 class="trainer-name">Тарас Сорока</h3>
+                        <dl class="trainer-facts">
+                            <div><dt>Для кого</dt><dd>Дорослі</dd></div>
+                            <div><dt>Формат</dt><dd>Група до 12 осіб</dd></div>
+                            <div><dt>Напрям</dt><dd>Аквааеробіка</dd></div>
+                            <div><dt>Досвід</dt><dd>6 років</dd></div>
+                            <div><dt>Кваліфікація</dt><dd>Сертифікований інструктор</dd></div>
+                        </dl>
+                        <p class="trainer-description">Групові заняття з аквааеробіки для дорослих.</p>
+                    </div>
+                </article>
+
+                <article class="trainer-card">
+                    <figure class="trainer-photo trainer-photo--oksana">
+                        <img src="assets/images/treneroksana.jpg" alt="Фото тренерки Оксани Корновської">
+                    </figure>
+                    <div class="trainer-info">
+                        <h3 class="trainer-name">Оксана Корновська</h3>
+                        <dl class="trainer-facts">
+                            <div><dt>Для кого</dt><dd>Діти 6–14 років</dd></div>
+                            <div><dt>Формат</dt><dd>Група до 8 осіб</dd></div>
+                            <div><dt>Напрям</dt><dd>Школа плавання</dd></div>
+                            <div><dt>Досвід</dt><dd>8 років</dd></div>
+                            <div><dt>Кваліфікація</dt><dd>Кандидат у майстри спорту</dd></div>
+                        </dl>
+                        <p class="trainer-description">Групові заняття у школі плавання для дітей.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="trainer-section recommendations-section" aria-labelledby="recommendations-title">
+            <h2 class="section-title" id="recommendations-title">Кого обрати</h2>
+            <div class="recommendation-grid">
+                <article class="recommendation-card">
+                    <h3>Я дорослий і хочу навчитися плавати</h3>
+                    <p>Індивідуальні заняття з плавання для дорослих з Степаном Гулою</p>
+                </article>
+                <article class="recommendation-card">
+                    <h3>Моя дитина вперше в басейні</h3>
+                    <p>Індивідуальні заняття з дитячого плавання з Ольгою Логовською</p>
+                </article>
+                <article class="recommendation-card">
+                    <h3>Хочу рухатись у компанії</h3>
+                    <p>Групова аквааеробіка для дорослих з Тарасом Сорокою</p>
+                </article>
+                <article class="recommendation-card">
+                    <h3>Дитина вже вміє триматися на воді</h3>
+                    <p>Групові заняття у школі плавання з Оксаною Корновською</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <section class="footer-col" aria-label="Про комплекс">
+            <h2 class="footer-brand">ВОДАН</h2>
+            <p class="footer-desc">Спортивно-оздоровчий комплекс</p>
+            <p class="footer-hours">Пн–Нд 08:00–22:00</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-contacts-title">
+            <h2 class="footer-col-title" id="footer-contacts-title">Контакти</h2>
+            <p class="footer-info">м. Львів, вул. Пасічна, 87</p>
+            <a class="footer-info" href="tel:+380686175494">+38 (068) 617-54-94</a>
+            <p class="footer-info">Email</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-social-title">
+            <h2 class="footer-col-title" id="footer-social-title">Соцмережі</h2>
+            <a class="footer-link" href="https://www.instagram.com/vodan_pool/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <p class="footer-link">Telegram</p>
+        </section>
+    </footer>
+</body>
+</html>

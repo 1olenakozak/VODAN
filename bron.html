@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Забронюйте доріжку для вільного плавання або запишіться на заняття у ВОДАН.">
+    <title>Бронювання — ВОДАН</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: { preflight: false },
+        theme: {
+          extend: {
+            colors: {
+              vodanBg: '#0A111E',
+              vodanCard: '#0D1B2A',
+              vodanAccent: '#00C2D1',
+              vodanText: '#F4F8FA',
+            },
+            fontFamily: {
+              sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+              heading: ['Montserrat', 'Segoe UI', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bron.css">
+</head>
+<body class="bg-[#0A111E] text-[#F4F8FA]">
+    <header class="header" id="home">
+        <a class="logo" href="index.html" aria-label="ВОДАН — на головну"><img src="assets/icons/logo.svg" alt="Логотип ВОДАН"></a>
+        <nav class="nav" aria-label="Головна навігація">
+            <a class="nav-item" href="index.html">Головна</a>
+            <details class="nav-dropdown">
+                <summary class="nav-item">Басейн <span aria-hidden="true">▾</span></summary>
+                <div class="dropdown-menu">
+                    <a class="dropdown-link" href="index.html#subscriptions">Абонементи</a>
+                    <a class="dropdown-link" href="rozklad.html">Розклад</a>
+                    <a class="dropdown-link" href="trener.html">Тренери</a>
+                    <a class="dropdown-link" href="bron.html" aria-current="page">Бронювання</a>
+                    <a class="dropdown-link" href="calculator.html">Розрахунок абонементу</a>
+                    <a class="dropdown-link" href="index.html#about">Про ВОДАН</a>
+                </div>
+            </details>
+            <a class="nav-item" href="spa.html">SPA</a>
+            <a class="nav-item" href="index.html#contacts">Контакти</a>
+        </nav>
+        <details class="mobile-nav">
+            <summary aria-label="Відкрити меню навігації">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </summary>
+            <nav aria-label="Мобільна навігація">
+                <a href="index.html">Головна</a>
+                <a href="index.html#subscriptions">Абонементи</a>
+                <a href="rozklad.html">Розклад</a>
+                <a href="trener.html">Тренери</a>
+                <a href="bron.html" aria-current="page">Бронювання</a>
+                <a href="spa.html">SPA</a>
+                <a href="calculator.html">Розрахунок абонементу</a>
+                <a href="index.html#about">Про ВОДАН</a>
+                <a href="index.html#contacts">Контакти</a>
+            </nav>
+        </details>
+        <button class="theme-switcher" type="button" aria-label="Змінити тему"></button>
+    </header>
+
+    <main class="main-content">
+        <section class="mx-auto w-[calc(100%-2rem)] max-w-[1200px] py-10 sm:w-[calc(100%-3rem)] sm:py-14" aria-labelledby="booking-title">
+            <div class="mb-7 max-w-2xl sm:mb-9">
+                <p class="mb-3 text-sm font-bold uppercase tracking-[0.14em] text-[#00C2D1]">Басейн ВОДАН</p>
+                <h1 class="font-heading text-3xl font-bold leading-tight tracking-tight text-[#F4F8FA] sm:text-5xl" id="booking-title">Бронювання</h1>
+                <p class="mt-3 text-sm leading-relaxed text-[#A8B7C7] sm:text-base">Забронюйте доріжку для вільного плавання або запишіться на тренування. Оберіть потрібний формат.</p>
+            </div>
+
+            <div class="booking-layout grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+                <input class="sr-only" type="radio" name="booking-mode" id="booking-lane" checked>
+                <input class="sr-only" type="radio" name="booking-mode" id="booking-class">
+                <div class="booking-left grid min-w-0 grid-cols-1 content-start gap-5 sm:grid-cols-2 lg:col-span-2" id="booking-left">
+                <label class="booking-mode-card flex min-h-20 min-w-0 cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-[#0D1B2A] p-4 transition-colors sm:p-5" for="booking-lane">
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-[#0A111E] text-[#00C2D1]" aria-hidden="true">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M3 16c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0M3 11c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"></path></svg>
+                    </span>
+                    <span class="min-w-0"><span class="block text-sm font-bold leading-snug text-[#F4F8FA] sm:text-base">Бронювання доріжки</span><span class="mt-1 hidden text-xs text-[#A8B7C7] sm:block">Плавання у зручний час</span></span>
+                </label>
+
+                <label class="booking-mode-card flex min-h-20 min-w-0 cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-[#0D1B2A] p-4 transition-colors sm:p-5" for="booking-class">
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-[#0A111E] text-[#00C2D1]" aria-hidden="true">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="16" rx="2"></rect><path stroke-linecap="round" d="M8 3v4m8-4v4M4 10h16m-8 3v4m-2-2h4"></path></svg>
+                    </span>
+                    <span class="min-w-0"><span class="block text-sm font-bold leading-snug text-[#F4F8FA] sm:text-base">Бронювання заняття</span><span class="mt-1 hidden text-xs text-[#A8B7C7] sm:block">Групові та індивідуальні тренування</span></span>
+                </label>
+
+                <section class="booking-panel min-w-0 sm:col-span-2" id="lane-panel" aria-labelledby="lane-title">
+                        <div class="grid min-w-0 gap-5">
+                            <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
+                                <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl" id="lane-title"><span class="text-[#00C2D1]">1.</span> Дата та час</legend>
+                                <p class="mb-2 text-sm text-[#A8B7C7]">День</p>
+                                <div class="grid grid-cols-4 gap-2 sm:grid-cols-7">
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-wed" checked><label class="choice-day" for="lane-date-wed"><span>Ср</span><strong>28</strong></label>
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-thu"><label class="choice-day" for="lane-date-thu"><span>Чт</span><strong>29</strong></label>
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-fri"><label class="choice-day" for="lane-date-fri"><span>Пт</span><strong>30</strong></label>
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-sat"><label class="choice-day" for="lane-date-sat"><span>Сб</span><strong>31</strong></label>
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-sun"><label class="choice-day" for="lane-date-sun"><span>Нд</span><strong>1</strong></label>
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-mon"><label class="choice-day" for="lane-date-mon"><span>Пн</span><strong>2</strong></label>
+                                    <input class="peer sr-only" type="radio" name="lane-date" id="lane-date-tue"><label class="choice-day" for="lane-date-tue"><span>Вт</span><strong>3</strong></label>
+                                </div>
+                                <p class="mb-2 mt-4 text-sm text-[#A8B7C7]">Доступний час</p>
+                                <div class="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-0800" disabled><label class="choice-time opacity-40 line-through" for="lane-time-0800" aria-label="08:00 недоступно">08:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-0900"><label class="choice-time" for="lane-time-0900">09:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-1100" checked><label class="choice-time" for="lane-time-1100">11:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-1200"><label class="choice-time" for="lane-time-1200">12:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-1600"><label class="choice-time" for="lane-time-1600">16:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-1700"><label class="choice-time" for="lane-time-1700">17:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-1800"><label class="choice-time" for="lane-time-1800">18:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-1900"><label class="choice-time" for="lane-time-1900">19:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-2000" disabled><label class="choice-time opacity-40 line-through" for="lane-time-2000" aria-label="20:00 недоступно">20:00</label>
+                                    <input class="peer sr-only" type="radio" name="lane-time" id="lane-time-2100"><label class="choice-time" for="lane-time-2100">21:00</label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
+                                <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl"><span class="text-[#00C2D1]">2.</span> Доріжка</legend>
+                                <p class="mb-3 text-sm text-[#A8B7C7]">Оберіть одну з доступних доріжок</p>
+                                <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-1" checked><label class="choice-lane" for="lane-1"><strong>1</strong><span><b>Доріжка 1</b><small>Вільна</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-2" disabled><label class="choice-lane choice-lane--busy" for="lane-2"><strong>2</strong><span><b>Доріжка 2</b><small>Зайнята</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-3"><label class="choice-lane" for="lane-3"><strong>3</strong><span><b>Доріжка 3</b><small>Вільна</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-4"><label class="choice-lane" for="lane-4"><strong>4</strong><span><b>Доріжка 4</b><small>Вільна</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-5"><label class="choice-lane" for="lane-5"><strong>5</strong><span><b>Доріжка 5</b><small>Вільна</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-6" disabled><label class="choice-lane choice-lane--busy" for="lane-6"><strong>6</strong><span><b>Доріжка 6</b><small>Зайнята</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-7"><label class="choice-lane" for="lane-7"><strong>7</strong><span><b>Доріжка 7</b><small>Вільна</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="lane-number" id="lane-8"><label class="choice-lane" for="lane-8"><strong>8</strong><span><b>Доріжка 8</b><small>Вільна</small></span></label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
+                                <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl"><span class="text-[#00C2D1]">3.</span> Ваші дані</legend>
+                                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="lane-name">Ім’я<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-name" name="lane-name" type="text" autocomplete="name" placeholder="Введіть ім’я"></label>
+                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="lane-phone">Телефон<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-phone" name="lane-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __"></label>
+                                </div>
+                                <p class="mb-2 mt-4 text-xs text-[#A8B7C7]">Кількість людей на доріжці</p>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <input class="peer sr-only" type="radio" name="lane-guests" id="lane-guest-1" checked><label class="choice-count" for="lane-guest-1">1</label>
+                                    <input class="peer sr-only" type="radio" name="lane-guests" id="lane-guest-2"><label class="choice-count" for="lane-guest-2">2</label>
+                                    <input class="peer sr-only" type="radio" name="lane-guests" id="lane-guest-3"><label class="choice-count" for="lane-guest-3">3</label>
+                                    <input class="peer sr-only" type="radio" name="lane-guests" id="lane-guest-4"><label class="choice-count" for="lane-guest-4">4</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                </section>
+
+                <section class="booking-panel min-w-0 sm:col-span-2" id="class-panel" aria-labelledby="class-title">
+                        <div class="grid min-w-0 gap-5">
+                            <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
+                                <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA]" id="class-title"><span class="text-[#00C2D1]">1.</span> Формат заняття</legend>
+                                <p class="mb-3 text-sm text-[#A8B7C7]">Групові заняття</p>
+                                <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                    <input class="peer sr-only" type="radio" name="class-choice" id="class-aqua" data-format="Групове, дорослі" data-title="Аквааеробіка" data-trainer="Іван Мельник" data-price="230" checked><label class="choice-session" for="class-aqua"><strong>Дорослі</strong><span>Аквааеробіка з Іваном Мельником</span><small>230 ₴ / заняття</small></label>
+                                    <input class="peer sr-only" type="radio" name="class-choice" id="class-kids" data-format="Групове, дитяче" data-title="Школа плавання" data-trainer="Софія Гринюк" data-price="180"><label class="choice-session" for="class-kids"><strong>Дитячі</strong><span>Школа плавання з Софією Гринюк</span><small>180 ₴ / заняття</small></label>
+                                </div>
+                                <p class="mb-3 mt-5 text-sm text-[#A8B7C7]">Індивідуальні заняття з тренером</p>
+                                <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                    <input class="peer sr-only" type="radio" name="class-choice" id="class-private-adult" data-format="Індивідуальне, дорослі" data-title="Плавання" data-trainer="Олена Коваль" data-price="350"><label class="choice-session" for="class-private-adult"><strong>Дорослі</strong><span>Плавання з Оленою Коваль</span><small>350 ₴ / заняття</small></label>
+                                    <input class="peer sr-only" type="radio" name="class-choice" id="class-private-child" data-format="Індивідуальне, дитяче" data-title="Плавання" data-trainer="Марта Поліщук" data-price="350"><label class="choice-session" for="class-private-child"><strong>Дитячі</strong><span>Плавання з Мартою Поліщук</span><small>350 ₴ / заняття</small></label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
+                                <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl"><span class="text-[#00C2D1]">2.</span> Дата та час</legend>
+                                <p class="mb-2 text-sm text-[#A8B7C7]">День</p>
+                                <div class="grid grid-cols-4 gap-2 sm:grid-cols-7">
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-wed" checked><label class="choice-day" for="class-date-wed"><span>Ср</span><strong>28</strong></label>
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-thu"><label class="choice-day" for="class-date-thu"><span>Чт</span><strong>29</strong></label>
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-fri"><label class="choice-day" for="class-date-fri"><span>Пт</span><strong>30</strong></label>
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-sat"><label class="choice-day" for="class-date-sat"><span>Сб</span><strong>31</strong></label>
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-sun"><label class="choice-day" for="class-date-sun"><span>Нд</span><strong>1</strong></label>
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-mon"><label class="choice-day" for="class-date-mon"><span>Пн</span><strong>2</strong></label>
+                                    <input class="peer sr-only" type="radio" name="class-date" id="class-date-tue"><label class="choice-day" for="class-date-tue"><span>Вт</span><strong>3</strong></label>
+                                </div>
+                                <p class="mb-3 mt-4 text-sm text-[#A8B7C7]">Доступні заняття у вибраний день</p>
+                                <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                                    <input class="peer sr-only" type="radio" name="class-time" id="class-time-0700" data-for-class="class-aqua" data-summary-value="07:00–07:45" checked><label class="choice-slot" for="class-time-0700"><strong>07:00</strong><span><b>Аквааеробіка</b><small>Іван Мельник, 45 хв</small><small>Вільно 6 із 12 місць</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="class-time" id="class-time-1800" data-for-class="class-aqua" data-summary-value="18:00–18:45"><label class="choice-slot" for="class-time-1800"><strong>18:00</strong><span><b>Аквааеробіка</b><small>Іван Мельник, 45 хв</small><small>Вільно 3 із 12 місць</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="class-time" id="class-time-0900" data-for-class="class-kids" data-summary-value="09:00–09:45"><label class="choice-slot" for="class-time-0900"><strong>09:00</strong><span><b>Школа плавання</b><small>Софія Гринюк, 45 хв</small><small>Вільно 4 із 8 місць</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="class-time" id="class-time-1000" data-for-class="class-private-adult" data-summary-value="10:00–11:00"><label class="choice-slot" for="class-time-1000"><strong>10:00</strong><span><b>Індивідуальне плавання</b><small>Олена Коваль, 60 хв</small><small>Вільно</small></span></label>
+                                    <input class="peer sr-only" type="radio" name="class-time" id="class-time-1600" data-for-class="class-private-child" data-summary-value="16:00–17:00"><label class="choice-slot" for="class-time-1600"><strong>16:00</strong><span><b>Індивідуальне плавання</b><small>Марта Поліщук, 60 хв</small><small>Вільно</small></span></label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
+                                <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl"><span class="text-[#00C2D1]">3.</span> Ваші дані</legend>
+                                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="class-name">Ім’я<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-name" name="class-name" type="text" autocomplete="name" placeholder="Введіть ім’я"></label>
+                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="class-phone">Телефон<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-phone" name="class-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __"></label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                </section>
+                </div>
+
+                <div class="booking-summary lg:col-span-1" id="booking-summary">
+                    <aside class="booking-summary-panel h-fit rounded-2xl border border-white/10 bg-[#0D1B2A] p-5 sm:p-6 lg:sticky lg:top-24 lg:self-start" id="lane-summary" aria-labelledby="lane-summary-title">
+                        <p class="mb-4 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-2 text-xs font-semibold text-[#F4F8FA]">Басейн: Спортивний 50 м</p>
+                        <h2 class="mb-4 font-heading text-2xl font-bold text-[#F4F8FA]" id="lane-summary-title">Ваше бронювання</h2>
+                        <dl class="grid gap-4 text-sm">
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Дата</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-date">Середа, 28 жовтня</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Час</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-time">11:00–12:00</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Доріжка</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-number">№ 1</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Людей</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-guests">1</dd></div>
+                        </dl>
+                        <p class="mt-4 text-xs text-[#A8B7C7]">До сплати</p>
+                        <p class="font-heading text-3xl font-extrabold text-[#00C2D1]">150 ₴</p>
+                        <a class="mt-4 block min-h-12 rounded-full bg-[#00C2D1] px-4 py-3 text-center text-base font-bold text-[#0A111E] transition-colors hover:bg-[#00D7E6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00C2D1]" href="tel:+380686175494">Забронювати доріжку</a>
+                        <p class="mt-3 text-center text-xs leading-relaxed text-[#A8B7C7]">Зателефонуйте адміністратору, щоб підтвердити обраний час.</p>
+                    </aside>
+                    <aside class="booking-summary-panel h-fit rounded-2xl border border-white/10 bg-[#0D1B2A] p-5 sm:p-6 lg:sticky lg:top-24 lg:self-start" id="class-summary" aria-labelledby="class-summary-heading">
+                        <h2 class="mb-4 font-heading text-2xl font-bold text-[#F4F8FA]" id="class-summary-heading">Ваше заняття</h2>
+                        <dl class="grid gap-4 text-sm">
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Формат</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-format">Групове, дорослі</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Заняття</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-title">Аквааеробіка</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Тренер</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-trainer">Іван Мельник</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Дата</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-date">Середа, 28 жовтня</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Час</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-time">07:00–07:45</dd></div>
+                        </dl>
+                        <p class="mt-4 text-xs text-[#A8B7C7]">Вартість заняття</p>
+                        <p class="font-heading text-3xl font-extrabold text-[#00C2D1]"><span id="class-summary-price">230</span> ₴</p>
+                        <a class="mt-4 block min-h-12 rounded-full bg-[#00C2D1] px-4 py-3 text-center text-base font-bold text-[#0A111E] transition-colors hover:bg-[#00D7E6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00C2D1]" href="tel:+380686175494">Записатися на заняття</a>
+                        <p class="mt-3 text-center text-xs leading-relaxed text-[#A8B7C7]">Зателефонуйте адміністратору, щоб підтвердити запис.</p>
+                    </aside>
+                </div>
+            </div>
+            <p class="mt-5 text-xs leading-relaxed text-[#A8B7C7]">Дати, доступність доріжок і занять у цій формі наведено для демонстрації. Уточніть актуальний розклад у адміністратора.</p>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <section class="footer-col" aria-label="Про комплекс">
+            <h2 class="footer-brand">ВОДАН</h2>
+            <p class="footer-desc">Спортивно-оздоровчий комплекс</p>
+            <p class="footer-hours">Пн–Нд 08:00–22:00</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-contacts-title">
+            <h2 class="footer-col-title" id="footer-contacts-title">Контакти</h2>
+            <p class="footer-info">м. Львів, вул. Пасічна, 87</p>
+            <a class="footer-info" href="tel:+380686175494">+38 (068) 617-54-94</a>
+            <p class="footer-info">Email</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-social-title">
+            <h2 class="footer-col-title" id="footer-social-title">Соцмережі</h2>
+            <a class="footer-link" href="https://www.instagram.com/vodan_pool/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <p class="footer-link">Telegram</p>
+        </section>
+    </footer>
+    <script>
+        const classChoices = document.querySelectorAll('input[name="class-choice"]');
+        const classSummaryFormat = document.getElementById("class-summary-format");
+        const classSummaryTitle = document.getElementById("class-summary-title");
+        const classSummaryTrainer = document.getElementById("class-summary-trainer");
+        const classSummaryPrice = document.getElementById("class-summary-price");
+
+        if (
+            classChoices.length === 0 ||
+            !(classSummaryFormat instanceof HTMLElement) ||
+            !(classSummaryTitle instanceof HTMLElement) ||
+            !(classSummaryTrainer instanceof HTMLElement) ||
+            !(classSummaryPrice instanceof HTMLElement)
+        ) {
+            throw new Error("Не вдалося ініціалізувати підсумок бронювання заняття.");
+        }
+
+        const updateClassSummary = (choice) => {
+            const price = Number(choice.dataset.price);
+            if (!choice.dataset.format || !choice.dataset.title || !choice.dataset.trainer || !Number.isFinite(price)) {
+                throw new Error("Для обраного заняття не задано повні дані.");
+            }
+
+            const classTimes = document.querySelectorAll('input[name="class-time"]');
+            const classSummaryTime = document.getElementById("class-summary-time");
+            let firstAvailableTime = null;
+            if (classTimes.length === 0 || !(classSummaryTime instanceof HTMLElement)) {
+                throw new Error("Не вдалося ініціалізувати час заняття.");
+            }
+
+            classTimes.forEach((time) => {
+                if (!(time instanceof HTMLInputElement) || !(time.nextElementSibling instanceof HTMLLabelElement)) {
+                    throw new Error("Некоректно налаштовано доступний час заняття.");
+                }
+                const available = time.dataset.forClass === choice.id;
+                time.hidden = !available;
+                time.nextElementSibling.hidden = !available;
+                if (!available) {
+                    time.checked = false;
+                } else if (firstAvailableTime === null) {
+                    firstAvailableTime = time;
+                }
+            });
+
+            if (firstAvailableTime === null || !firstAvailableTime.dataset.summaryValue) {
+                throw new Error("Для обраного заняття немає доступного часу.");
+            }
+            firstAvailableTime.checked = true;
+            classSummaryTime.textContent = firstAvailableTime.dataset.summaryValue;
+
+            classSummaryFormat.textContent = choice.dataset.format;
+            classSummaryTitle.textContent = choice.dataset.title;
+            classSummaryTrainer.textContent = choice.dataset.trainer;
+            classSummaryPrice.textContent = String(price);
+        };
+
+        const radioSummaries = [
+            {
+                name: "lane-date",
+                target: "lane-summary-date",
+                values: {
+                    "lane-date-wed": "Середа, 28 жовтня",
+                    "lane-date-thu": "Четвер, 29 жовтня",
+                    "lane-date-fri": "П’ятниця, 30 жовтня",
+                    "lane-date-sat": "Субота, 31 жовтня",
+                    "lane-date-sun": "Неділя, 1 листопада",
+                    "lane-date-mon": "Понеділок, 2 листопада",
+                    "lane-date-tue": "Вівторок, 3 листопада",
+                },
+            },
+            {
+                name: "lane-time",
+                target: "lane-summary-time",
+                values: {
+                    "lane-time-0800": "08:00–09:00",
+                    "lane-time-0900": "09:00–10:00",
+                    "lane-time-1100": "11:00–12:00",
+                    "lane-time-1200": "12:00–13:00",
+                    "lane-time-1600": "16:00–17:00",
+                    "lane-time-1700": "17:00–18:00",
+                    "lane-time-1800": "18:00–19:00",
+                    "lane-time-1900": "19:00–20:00",
+                    "lane-time-2000": "20:00–21:00",
+                    "lane-time-2100": "21:00–22:00",
+                },
+            },
+            {
+                name: "lane-number",
+                target: "lane-summary-number",
+                values: Object.fromEntries(Array.from({ length: 8 }, (_, index) => [`lane-${index + 1}`, `№ ${index + 1}`])),
+            },
+            {
+                name: "lane-guests",
+                target: "lane-summary-guests",
+                values: Object.fromEntries(Array.from({ length: 4 }, (_, index) => [`lane-guest-${index + 1}`, String(index + 1)])),
+            },
+            {
+                name: "class-date",
+                target: "class-summary-date",
+                values: {
+                    "class-date-wed": "Середа, 28 жовтня",
+                    "class-date-thu": "Четвер, 29 жовтня",
+                    "class-date-fri": "П’ятниця, 30 жовтня",
+                    "class-date-sat": "Субота, 31 жовтня",
+                    "class-date-sun": "Неділя, 1 листопада",
+                    "class-date-mon": "Понеділок, 2 листопада",
+                    "class-date-tue": "Вівторок, 3 листопада",
+                },
+            },
+            {
+                name: "class-time",
+                target: "class-summary-time",
+                values: {
+                    "class-time-0700": "07:00–07:45",
+                    "class-time-1800": "18:00–18:45",
+                    "class-time-0900": "09:00–09:45",
+                    "class-time-1000": "10:00–11:00",
+                    "class-time-1600": "16:00–17:00",
+                },
+            },
+        ];
+
+        radioSummaries.forEach(({ name, target, values }) => {
+            const choices = document.querySelectorAll(`input[name="${name}"]`);
+            const output = document.getElementById(target);
+            if (choices.length === 0 || !(output instanceof HTMLElement)) {
+                throw new Error(`Не вдалося ініціалізувати підсумок для «${name}».`);
+            }
+
+            const updateSummary = (choice) => {
+                const value = values[choice.id];
+                if (!value) {
+                    throw new Error(`Не задано значення підсумку для «${choice.id}».`);
+                }
+                output.textContent = value;
+            };
+
+            choices.forEach((choice) => choice.addEventListener("change", () => updateSummary(choice)));
+            const selectedChoice = document.querySelector(`input[name="${name}"]:checked`);
+            if (!(selectedChoice instanceof HTMLInputElement)) {
+                throw new Error(`Не обрано значення для підсумку «${name}».`);
+            }
+            updateSummary(selectedChoice);
+        });
+
+        classChoices.forEach((choice) => {
+            choice.addEventListener("change", () => updateClassSummary(choice));
+        });
+
+        const selectedClass = document.querySelector('input[name="class-choice"]:checked');
+        if (!(selectedClass instanceof HTMLInputElement)) {
+            throw new Error("Не обрано заняття для підсумку.");
+        }
+        updateClassSummary(selectedClass);
+    </script>
+</body>
+</html>

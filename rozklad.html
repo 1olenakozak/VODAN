@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Тижневий розклад тренувань і вільного плавання у спортивно-оздоровчому комплексі ВОДАН.">
+    <title>Розклад тренувань — ВОДАН</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: { preflight: false },
+        theme: {
+          extend: {
+            colors: {
+              vodanBg: '#0A111E',
+              vodanCard: '#0D1B2A',
+              vodanAccent: '#00C2D1',
+              vodanText: '#F4F8FA',
+            },
+            fontFamily: {
+              sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+              heading: ['Montserrat', 'Segoe UI', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="rozklad.css">
+</head>
+<body class="bg-[#0A111E] text-[#F4F8FA]">
+    <header class="header" id="home">
+        <a class="logo" href="index.html" aria-label="ВОДАН — на головну"><img src="assets/icons/logo.svg" alt="Логотип ВОДАН"></a>
+        <nav class="nav" aria-label="Головна навігація">
+            <a class="nav-item" href="index.html">Головна</a>
+            <details class="nav-dropdown">
+                <summary class="nav-item">Басейн <span aria-hidden="true">▾</span></summary>
+                <div class="dropdown-menu">
+                    <a class="dropdown-link" href="index.html#subscriptions">Абонементи</a>
+                    <a class="dropdown-link" href="rozklad.html" aria-current="page">Розклад</a>
+                    <a class="dropdown-link" href="trener.html">Тренери</a>
+                    <a class="dropdown-link" href="bron.html">Бронювання</a>
+                    <a class="dropdown-link" href="calculator.html">Розрахунок абонементу</a>
+                    <a class="dropdown-link" href="index.html#about">Про ВОДАН</a>
+                </div>
+            </details>
+            <a class="nav-item" href="spa.html">SPA</a>
+            <a class="nav-item" href="index.html#contacts">Контакти</a>
+        </nav>
+        <details class="mobile-nav">
+            <summary aria-label="Відкрити меню навігації">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </summary>
+            <nav aria-label="Мобільна навігація">
+                <a href="index.html">Головна</a>
+                <a href="index.html#subscriptions">Абонементи</a>
+                <a href="rozklad.html" aria-current="page">Розклад</a>
+                <a href="trener.html">Тренери</a>
+                <a href="bron.html">Бронювання</a>
+                <a href="spa.html">SPA</a>
+                <a href="calculator.html">Розрахунок абонементу</a>
+                <a href="index.html#about">Про ВОДАН</a>
+                <a href="index.html#contacts">Контакти</a>
+            </nav>
+        </details>
+        <button class="theme-switcher" type="button" aria-label="Змінити тему"></button>
+    </header>
+
+    <main class="main-content">
+        <section class="mx-auto w-[calc(100%-2rem)] max-w-[1200px] py-12 sm:w-[calc(100%-3rem)] sm:py-16" aria-labelledby="schedule-title">
+            <div class="mb-10 text-center sm:mb-12">
+                <p class="mb-3 text-sm font-bold uppercase tracking-[0.14em] text-[#00C2D1]">Басейн ВОДАН</p>
+                <h1 class="font-heading text-3xl font-bold leading-tight tracking-tight text-[#F4F8FA] sm:text-5xl" id="schedule-title">Розклад тренувань</h1>
+                <p class="mx-auto mt-4 max-w-2xl text-base text-[#A8B7C7] sm:text-lg">Плануйте тренування заздалегідь: перегляньте години вільного плавання, групових та індивідуальних занять.</p>
+            </div>
+
+            <section class="mb-12" aria-labelledby="legend-title">
+                <h2 class="mb-5 font-heading text-2xl font-bold text-[#F4F8FA]" id="legend-title">Позначення</h2>
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                    <article class="rounded-2xl border border-white/10 bg-[#0D1B2A] p-5">
+                        <div class="mb-3 flex items-center gap-3"><span class="h-3 w-3 shrink-0 rounded-full bg-[#00C2D1]" aria-hidden="true"></span><h3 class="font-heading text-lg font-bold text-[#F4F8FA]">Вільне плавання</h3></div>
+                        <p class="text-sm leading-relaxed text-[#A8B7C7]">Самостійне плавання у басейні у позначені години.</p>
+                    </article>
+                    <article class="rounded-2xl border border-white/10 bg-[#0D1B2A] p-5">
+                        <div class="mb-3 flex items-center gap-3"><span class="h-3 w-3 shrink-0 rounded-full bg-[#A78BFA]" aria-hidden="true"></span><h3 class="font-heading text-lg font-bold text-[#F4F8FA]">Групові заняття</h3></div>
+                        <p class="text-sm leading-relaxed text-[#A8B7C7]">Тренування у групі за розкладом під керівництвом тренера.</p>
+                    </article>
+                    <article class="rounded-2xl border border-white/10 bg-[#0D1B2A] p-5">
+                        <div class="mb-3 flex items-center gap-3"><span class="h-3 w-3 shrink-0 rounded-full bg-[#FBBF24]" aria-hidden="true"></span><h3 class="font-heading text-lg font-bold text-[#F4F8FA]">Індивідуальні заняття</h3></div>
+                        <p class="text-sm leading-relaxed text-[#A8B7C7]">Персональне тренування з тренером за попереднім записом.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mb-12" aria-labelledby="weekly-schedule-title">
+                <div class="mb-5">
+                    <h2 class="font-heading text-2xl font-bold text-[#F4F8FA]" id="weekly-schedule-title">Розклад на тиждень</h2>
+                    <p class="mt-2 text-sm leading-relaxed text-[#A8B7C7] sm:text-base">Розклад наведено як демонстраційний приклад. Уточнюйте актуальність занять і наявність місць у адміністратора.</p>
+                </div>
+                <div class="schedule-scroll max-w-full overflow-x-auto overscroll-x-contain rounded-2xl border border-white/10 bg-[#0D1B2A]" tabindex="0" aria-label="Таблиця тижневого розкладу; прокрутіть горизонтально, щоб переглянути всі дні">
+                    <table class="w-full min-w-[1050px] border-collapse text-left text-xs sm:text-sm">
+                        <caption class="sr-only">Розклад занять у басейні з понеділка по неділю, з 07:00 до 20:00</caption>
+                        <thead>
+                            <tr class="bg-[#111F30] text-[#F4F8FA]">
+                                <th class="sticky left-0 z-[1] min-w-24 border border-white/10 bg-[#111F30] px-3 py-3 font-semibold" scope="col">Час</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Пн</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Вт</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Ср</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Чт</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Пт</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Сб</th>
+                                <th class="min-w-[136px] border border-white/10 px-3 py-3 font-semibold" scope="col">Нд</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">07:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>07:00–08:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>07:00–08:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>07:00–08:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>07:00–08:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>07:00–08:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>07:00–08:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>07:00–08:00</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">08:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>08:00–09:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>08:00–09:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>08:00–09:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>08:00–09:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>08:00–09:00</span><span>Софія</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">09:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>09:00–10:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>09:00–10:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>09:00–10:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>09:00–10:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>09:00–10:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>09:00–10:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>09:00–10:00</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">10:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>10:00–11:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>10:00–11:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>10:00–11:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>10:00–11:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>10:00–11:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>10:00–11:00</span><span>Марта</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">11:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>11:00–12:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>11:00–12:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>11:00–12:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>11:00–12:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>11:00–12:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>11:00–12:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">12:00</th>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>12:00–13:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>12:00–13:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>12:00–13:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>12:00–13:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>12:00–13:00</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">13:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>13:00–14:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>13:00–14:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>13:00–14:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>13:00–14:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">14:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>14:00–15:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>14:00–15:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>14:00–15:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>14:00–15:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>14:00–15:00</span><span>Софія</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">15:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>15:00–16:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>15:00–16:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>15:00–16:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>15:00–16:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>15:00–16:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>15:00–16:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>15:00–16:00</span><span>Софія</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">16:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>16:00–17:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>16:00–17:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>16:00–17:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>16:00–17:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>16:00–17:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>16:00–17:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">17:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>17:00–18:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>17:00–18:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>17:00–18:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>17:00–18:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Аквааеробіка</strong><span>17:00–18:00</span><span>Марта</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>17:00–18:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--group"><strong>Школа плавання</strong><span>17:00–18:00</span><span>Софія</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">18:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>18:00–19:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>18:00–19:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>18:00–19:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>18:00–19:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>18:00–19:00</span><span>Іван</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>18:00–19:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>18:00–19:00</span></div></td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">19:00</th>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>19:00–20:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>19:00–20:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>19:00–20:00</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--individual"><strong>Індивідуальне плавання</strong><span>19:00–20:00</span><span>Софія</span></div></td>
+                                <td class="border border-white/10 p-2"><div class="schedule-event schedule-event--free"><strong>Вільне плавання</strong><span>19:00–20:00</span></div></td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                            </tr>
+                            <tr>
+                                <th class="sticky left-0 z-[1] border border-white/10 bg-[#111F30] px-3 py-2 font-semibold text-[#A8B7C7]" scope="row">20:00</th>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                                <td class="border border-white/10 p-2 text-center text-[#526273]">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section aria-labelledby="schedule-notes-title">
+                <h2 class="mb-5 font-heading text-2xl font-bold text-[#F4F8FA]" id="schedule-notes-title">Важливо знати</h2>
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                    <article class="rounded-2xl border border-white/10 bg-[#0D1B2A] p-5">
+                        <div class="mb-3 flex items-center gap-3">
+                            <svg class="h-6 w-6 shrink-0 text-[#00C2D1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" d="M12 7v5l3 2"></path></svg>
+                            <h3 class="font-heading text-lg font-bold text-[#F4F8FA]">Тривалість</h3>
+                        </div>
+                        <p class="text-sm leading-relaxed text-[#A8B7C7]">Одне заняття триває 60 хвилин. У розклад включено час на тренування.</p>
+                    </article>
+                    <article class="rounded-2xl border border-white/10 bg-[#0D1B2A] p-5">
+                        <div class="mb-3 flex items-center gap-3">
+                            <svg class="h-6 w-6 shrink-0 text-[#00C2D1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.5 2M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5"></path></svg>
+                            <h3 class="font-heading text-lg font-bold text-[#F4F8FA]">Приходьте заздалегідь</h3>
+                        </div>
+                        <p class="text-sm leading-relaxed text-[#A8B7C7]">Будь ласка, приходьте за 10–15 хвилин до початку заняття.</p>
+                    </article>
+                    <article class="rounded-2xl border border-white/10 bg-[#0D1B2A] p-5">
+                        <div class="mb-3 flex items-center gap-3">
+                            <svg class="h-6 w-6 shrink-0 text-[#00C2D1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 3v3m8-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13H4V6a1 1 0 0 1 1-1Z"></path><path stroke-linecap="round" stroke-linejoin="round" d="m9 15 2 2 4-4"></path></svg>
+                            <h3 class="font-heading text-lg font-bold text-[#F4F8FA]">Запис</h3>
+                        </div>
+                        <p class="text-sm leading-relaxed text-[#A8B7C7]">На індивідуальні заняття записуйтеся заздалегідь через адміністратора.</p>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <section class="footer-col" aria-label="Про комплекс">
+            <h2 class="footer-brand">ВОДАН</h2>
+            <p class="footer-desc">Спортивно-оздоровчий комплекс</p>
+            <p class="footer-hours">Пн–Нд 08:00–22:00</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-contacts-title">
+            <h2 class="footer-col-title" id="footer-contacts-title">Контакти</h2>
+            <p class="footer-info">м. Львів, вул. Пасічна, 87</p>
+            <a class="footer-info" href="tel:+380686175494">+38 (068) 617-54-94</a>
+            <p class="footer-info">Email</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-social-title">
+            <h2 class="footer-col-title" id="footer-social-title">Соцмережі</h2>
+            <a class="footer-link" href="https://www.instagram.com/vodan_pool/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <p class="footer-link">Telegram</p>
+        </section>
+    </footer>
+</body>
+</html>

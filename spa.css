@@ -1,0 +1,33 @@
+.spa-image {
+    aspect-ratio: 16 / 10;
+}
+
+.spa-facts {
+    margin: 0;
+}
+
+.spa-facts > div {
+    min-width: 0;
+}
+
+.spa-facts dt {
+    color: #00C2D1;
+}
+
+.spa-facts dd {
+    margin: 0;
+    color: #F4F8FA;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.mobile-nav > nav {
+    max-width: calc(100vw - 2rem);
+}
+
+@media (min-width: 768px) {
+    .spa-image {
+        aspect-ratio: auto;
+        min-height: 100%;
+    }
+}

@@ -1,0 +1,243 @@
+.trainers-main {
+    overflow: visible;
+}
+
+.trainers-intro,
+.trainer-section {
+    width: min(var(--content-width), calc(100% - var(--container-gutter) - var(--container-gutter)));
+    margin-inline: auto;
+}
+
+.trainers-intro {
+    padding-block: clamp(var(--spacing-8), 9vw, var(--spacing-10)) var(--spacing-7);
+    text-align: center;
+}
+
+.trainers-eyebrow {
+    margin-bottom: var(--spacing-3);
+    color: var(--color-turquoise);
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.trainers-title {
+    letter-spacing: -0.04em;
+}
+
+.trainers-lead {
+    max-width: 660px;
+    margin: var(--spacing-4) auto 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lead);
+}
+
+.trainer-section {
+    padding-block: var(--spacing-5) var(--spacing-8);
+}
+
+.trainer-section .section-title {
+    margin-bottom: var(--spacing-5);
+}
+
+.trainer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: var(--spacing-5);
+}
+
+.trainer-card {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    align-items: stretch;
+    border: var(--border-width) solid var(--color-border-ui);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card-ui);
+    transition: border-color var(--transition-standard), transform var(--transition-standard);
+}
+
+.trainer-card:hover {
+    border-color: var(--color-turquoise);
+    transform: translateY(-4px);
+}
+
+.trainer-photo {
+    display: grid;
+    align-self: stretch;
+    min-width: 0;
+    aspect-ratio: auto;
+    place-items: center;
+    margin: 0;
+    border-radius: var(--radius-card) 0 0 var(--radius-card);
+    background: var(--color-surface-raised);
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.trainer-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.trainer-photo--oksana img {
+    object-position: center 15%;
+}
+
+.trainer-photo figcaption {
+    max-width: 100%;
+    padding: var(--spacing-2);
+    border-radius: var(--radius-small);
+    background: var(--color-surface);
+    font-size: var(--font-size-caption);
+}
+
+.trainer-info {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    padding: clamp(var(--spacing-3), 2vw, var(--spacing-5));
+}
+
+.trainer-name {
+    min-width: 0;
+    color: var(--color-text-primary);
+    overflow-wrap: anywhere;
+}
+
+.trainer-facts {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    gap: var(--spacing-2);
+}
+
+.trainer-facts > div {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    column-gap: var(--spacing-2);
+}
+
+.trainer-facts dt {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+    overflow-wrap: anywhere;
+}
+
+.trainer-facts dd {
+    min-width: 0;
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+    overflow-wrap: anywhere;
+}
+
+.trainer-description {
+    min-width: 0;
+    color: var(--color-turquoise);
+    overflow-wrap: anywhere;
+}
+
+.recommendations-section {
+    padding-bottom: var(--spacing-10);
+}
+
+.recommendations-section .section-title {
+    color: var(--color-turquoise);
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-4);
+}
+
+.recommendation-card {
+    display: grid;
+    min-width: 0;
+    align-content: start;
+    gap: var(--spacing-3);
+    padding: var(--spacing-5);
+    border: var(--border-width) solid var(--color-border-ui);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+}
+
+.recommendation-card h3 {
+    color: var(--color-text-primary);
+    overflow-wrap: anywhere;
+}
+
+.recommendation-card p {
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 1050px) {
+    .trainer-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .trainer-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .trainer-photo {
+        position: relative;
+        display: block;
+        flex: 0 0 auto;
+        width: 100%;
+        height: clamp(180px, 38vw, 320px);
+        aspect-ratio: auto;
+        border-radius: var(--radius-card) var(--radius-card) 0 0;
+    }
+
+    .trainer-photo img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+    }
+
+    .trainer-info {
+        position: relative;
+        flex: 0 0 auto;
+        width: 100%;
+        background: var(--color-surface);
+    }
+
+    .recommendation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .trainers-intro {
+        padding-top: var(--spacing-7);
+    }
+
+    .trainer-photo {
+        height: clamp(160px, 55vw, 240px);
+    }
+
+    .trainer-info {
+        padding: var(--spacing-4);
+    }
+
+    .trainer-facts > div {
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    }
+
+    .recommendation-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

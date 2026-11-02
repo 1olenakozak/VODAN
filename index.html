@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Спортивно-оздоровчий комплекс ВОДАН: басейн, SPA, абонементи та онлайн-бронювання.">
+    <title>ВОДАН — Спортивно-оздоровчий комплекс</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        theme: {
+          extend: {
+            colors: {
+              vodanBg: '#0A111E',
+              vodanCard: '#0D1B2A',
+              vodanAccent: '#00C2D1',
+              vodanText: '#F4F8FA',
+            },
+            fontFamily: {
+              sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+              heading: ['Montserrat', 'Segoe UI', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Семантична шапка та навігація покращують доступність і структуру сторінки. -->
+    <header class="header" id="home">
+        <a class="logo" href="#home" aria-label="ВОДАН – на головну"><img src="assets/icons/logo.svg" alt="Логотип ВОДАН"></a>
+        <nav class="nav" aria-label="Головна навігація">
+            <a class="nav-item" href="#home" aria-current="page">Головна</a>
+            <details class="nav-dropdown">
+                <summary class="nav-item">Басейн <span aria-hidden="true">▾</span></summary>
+                <div class="dropdown-menu">
+                    <a class="dropdown-link" href="#subscriptions">Абонементи</a>
+                    <a class="dropdown-link" href="rozklad.html">Розклад</a>
+                    <a class="dropdown-link" href="trener.html">Тренери</a>
+                    <a class="dropdown-link" href="bron.html">Бронювання</a>
+                    <a class="dropdown-link" href="calculator.html">Розрахунок абонементу</a>
+                    <a class="dropdown-link" href="#about">Про ВОДАН</a>
+                </div>
+            </details>
+            <a class="nav-item" href="spa.html">SPA</a>
+            <a class="nav-item" href="#contacts">Контакти</a>
+        </nav>
+        <details class="mobile-nav">
+            <summary aria-label="Відкрити меню навігації">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </summary>
+            <nav aria-label="Мобільна навігація">
+                <a href="#home">Головна</a>
+                <a href="#subscriptions">Абонементи</a>
+                <a href="rozklad.html">Розклад</a>
+                <a href="trener.html">Тренери</a>
+                <a href="bron.html">Бронювання</a>
+                <a href="spa.html">SPA</a>
+                <a href="calculator.html">Розрахунок абонементу</a>
+                <a href="#about">Про ВОДАН</a>
+                <a href="#contacts">Контакти</a>
+            </nav>
+        </details>
+        <button class="theme-switcher" type="button" aria-label="Змінити тему"></button>
+    </header>
+
+    <main class="main-content">
+        <!-- Один h1 визначає головну тему сторінки; підзаголовки впорядковані за рівнями. -->
+        <section class="hero-section" aria-labelledby="hero-title">
+            <video autoplay muted playsinline poster="assets/images/hero_bg.jpg" class="absolute inset-0 w-full h-full object-cover z-0" aria-hidden="true">
+                <source src="assets/images/video_content_clean.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 z-10 bg-[#0A111E]/70" aria-hidden="true"></div>
+            <div class="relative z-20 flex w-full max-w-5xl flex-col items-center">
+                <h1 class="hero-title w-full break-words !text-[2.625rem] sm:!text-5xl lg:!text-6xl text-[#F4F8FA]" id="hero-title">Гармонія води, тіла та сили</h1>
+                <p class="hero-subtitle w-full !text-lg sm:!text-xl text-[#F4F8FA]">Бронюй власну доріжку в один клік, збирай ідеальний абонемент та тренуйся у власному ритмі без черг і дзвінків.</p>
+                <nav class="hero-buttons !mt-6 flex w-full max-w-[640px] flex-col justify-center gap-4 sm:w-auto sm:flex-row" aria-label="Дії">
+                    <a class="btn btn--primary !px-7 !py-4 !text-lg" href="calculator.html">Розрахувати абонемент</a>
+                    <a class="btn btn--secondary !px-7 !py-4 !text-lg" href="bron.html">Забронювати</a>
+                </nav>
+
+                <ul class="features-bar !mt-8 !grid !w-full !max-w-full !grid-cols-1 gap-4 sm:!grid-cols-2 lg:!grid-cols-4" aria-label="Характеристики комплексу">
+                    <li class="feature-card !w-full !min-w-0 !p-5 sm:!p-6 border border-transparent hover:border-[#00C2D1] transition-all duration-300">
+                        <strong class="!text-2xl sm:!text-3xl">50 м</strong>
+                        <span class="!text-base">Довжина басейну</span>
+                    </li>
+                    <li class="feature-card !w-full !min-w-0 !p-5 sm:!p-6 border border-transparent hover:border-[#00C2D1] transition-all duration-300">
+                        <strong class="!text-2xl sm:!text-3xl">28.5 °C</strong>
+                        <span class="!text-base">Температура</span>
+                    </li>
+                    <li class="feature-card !w-full !min-w-0 !p-5 sm:!p-6 border border-transparent hover:border-[#00C2D1] transition-all duration-300">
+                        <strong class="!text-2xl sm:!text-3xl">3 рівні</strong>
+                        <span class="!text-base">Рівні комплексу</span>
+                    </li>
+                    <li class="feature-card !w-full !min-w-0 !p-5 sm:!p-6 border border-transparent hover:border-[#00C2D1] transition-all duration-300">
+                        <strong class="!text-2xl sm:!text-3xl">1800 м²</strong>
+                        <span class="!text-base">Площа комплексу</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Секції та article відокремлюють самостійні пропозиції комплексу. -->
+        <section class="services-section" id="services" aria-labelledby="services-title">
+            <h2 class="section-title" id="services-title">Послуги комплексу</h2>
+            <div class="cards-container">
+                <article class="card service-card bg-vodanCard text-vodanText">
+                    <h3 class="card-title text-vodanAccent">Басейн</h3>
+                    <p class="service-description">Плавання та тренування у воді в комфортному просторі комплексу.</p>
+                    <a class="btn btn--secondary" href="#contacts">Дізнатися більше</a>
+                </article>
+                <article class="card service-card bg-vodanCard text-vodanText">
+                    <h3 class="card-title text-vodanAccent">SPA</h3>
+                    <p class="service-description">Зона відпочинку й відновлення після активного дня.</p>
+                    <a class="btn btn--secondary" href="#contacts">Дізнатися більше</a>
+                </article>
+                <article class="card service-card bg-vodanCard text-vodanText">
+                    <h3 class="card-title text-vodanAccent">Тренування</h3>
+                    <p class="service-description">Заняття з тренером для особистих спортивних цілей.</p>
+                    <a class="btn btn--secondary" href="#contacts">Дізнатися більше</a>
+                </article>
+                <article class="card service-card bg-vodanCard text-vodanText">
+                    <h3 class="card-title text-vodanAccent">Групові заняття</h3>
+                    <p class="service-description">Спільні тренування для руху, мотивації та гарного самопочуття.</p>
+                    <a class="btn btn--secondary" href="#contacts">Дізнатися більше</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="services-section" id="subscriptions" aria-labelledby="subscriptions-title">
+            <h2 class="section-title" id="subscriptions-title">Сервіси та планування візиту</h2>
+            <section class="cards-container" aria-label="Доступні абонементи">
+                <article class="card">
+                    <img src="assets/images/abonement.jpg" alt="" class="card-img" aria-hidden="true">
+
+                    <h3 class="card-title">Абонемент «Початківець»</h3>
+                    <p class="card-price">5000 грн/місяць</p>
+                    <ul class="card-list">
+                        <li class="list-item">Басейн 50 м без ліміту</li>
+                        <li class="list-item">SPA-зона</li>
+                        <li class="list-item">10 тренувань з тренером</li>
+                        <li class="list-item">Підземний паркінг</li>
+                    </ul>
+                    <a class="btn btn--primary" href="calculator.html">Розрахувати абонемент</a>
+                </article>
+                <article class="card">
+                    <img src="assets/images/abonement.jpg" alt="" class="card-img" aria-hidden="true">
+
+                    <h3 class="card-title">Абонемент «Дитячий»</h3>
+                    <p class="card-price">2000 грн/місяць</p>
+                    <ul class="card-list">
+                        <li class="list-item">Басейн 50 м без ліміту</li>
+                        <li class="list-item">1,5 години безперервного плавання</li>
+                        <li class="list-item">SPA — турецька лазня</li>
+                    </ul>
+                    <a class="btn btn--primary" href="calculator.html">Розрахувати абонемент</a>
+                </article>
+            </section>
+        </section>
+
+        <section class="about-section about-section--video-followup" id="about" aria-labelledby="about-title">
+            <img src="assets/images/whatv.jpg" alt="" class="about-image" aria-hidden="true">
+            <div class="about-text-block">
+                <h2 class="section-title" id="about-title">Що таке ВОДАН?</h2>
+                <p class="about-text">Сучасний спортивно-оздоровчий комплекс нового покоління, створений для тих, хто обирає активний спосіб життя, турботу про здоров'я та гармонію душі й тіла.
+                        Наш простір поєднує в собі передові фітнес-технології, професійний напівпроточний басейн із сучасними системами очищення води та унікальну релакс-зону з різноманітними саунами для глибокого відновлення після навантажень.
+                        Це твій ідеальний баланс між продуктивним тренуванням та повноцінним відпочинком у центрі міста.</p>
+            </div>
+        </section>
+
+        <section class="video-section" aria-labelledby="video-title">
+            <h2 class="section-title video-title" id="video-title">Віртуальний тур по комплексу ВОДАН</h2>
+            <div class="video-frame">
+                <iframe
+                    class="video-embed"
+                    src="https://www.youtube.com/embed/cUXNGnCTujg?si=oan0F3whQJH-kgUk"
+                    title="YouTube video player"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <section class="benefits-section" aria-labelledby="benefits-title">
+            <h2 class="section-title" id="benefits-title">Чому обирають ВОДАН?</h2>
+            <ul class="benefits-list">
+                <li><img src="assets/icons/icon_pool_darkmode.svg" alt="" class="benefit-icon"> Прозорість ціни: збирайте свій абонемент у динамічному калькуляторі з миттєвим розрахунком вартості.</li>
+                <li><img src="assets/icons/icon_calc_darkmode.svg" alt="" class="benefit-icon"> Повний контроль: бронюйте вільну доріжку чи заняття в декілька кліків у режимі реального часу.</li>
+                <li><img src="assets/icons/icon_spa_darkmode.svg" alt="" class="benefit-icon"> Безпека родини: сертифіковані тренери зі спеціалізацією — від адаптації дітей до підготовки спортсменів.</li>
+            </ul>
+            <p class="benefits-subtext">Жодного хаосу — лише спорт і відновлення у вашому ритмі.</p>
+        </section>
+
+        <section class="reviews-section" aria-labelledby="reviews-title">
+            <h2 class="section-title" id="reviews-title">Відгуки</h2>
+            <p class="section-subtitle">Атмосфера, до якої хочеться повертатися</p>
+            <section class="reviews-container" aria-label="Відгуки клієнтів">
+                <article class="review-card">
+                    <h3 class="review-author">Олена</h3>
+                    <p class="review-text">Супер</p>
+                    <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                </article>
+                <article class="review-card">
+                    <h3 class="review-author">Орест</h3>
+                    <p class="review-text">Класно</p>
+                    <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                </article>
+                <article class="review-card">
+                    <h3 class="review-author">Юля</h3>
+                    <p class="review-text">Клас</p>
+                    <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <!-- Підвал містить окремі тематичні секції та ціль для посилання «Контакти». -->
+    <footer class="footer" id="contacts">
+        <section class="footer-col" aria-label="Про комплекс">
+            <h2 class="footer-brand">ВОДАН</h2>
+            <p class="footer-desc">Спортивно-оздоровчий комплекс</p>
+            <p class="footer-hours">Пн–Нд 08:00–22:00</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-contacts-title">
+            <h2 class="footer-col-title" id="footer-contacts-title">Контакти</h2>
+            <p class="footer-info">м. Львів, вул. Пасічна, 87</p>
+            <a class="footer-info" href="tel:+380686175494">+38 (068) 617-54-94</a>
+            <p class="footer-info">Email</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-map-title">
+            <h2 class="footer-col-title" id="footer-map-title">Як нас знайти</h2>
+            <div class="map-container">
+                <iframe
+                    class="map-embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1990.5321153934838!2d24.076905264576126!3d49.816137336588454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ac2a6faf27bbf%3A0xcb887ac5720a3c48!2z0LLRg9C70LjRhtGPINCf0LDRgdGW0YfQvdCwLCA4Nywg0JvRjNCy0ZbQsiwg0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCA3OTAwMA!5e0!3m2!1suk!2sua!4v1793620486866!5m2!1suk!2sua"
+                    title="Карта проїзду до спортивного комплексу ВОДАН"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-social-title">
+            <h2 class="footer-col-title" id="footer-social-title">Соцмережі</h2>
+            <a class="footer-link" href="https://www.instagram.com/vodan_pool/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <p class="footer-link">Telegram</p>
+        </section>
+    </footer>
+
+    <script>
+        const poolDropdown = document.querySelector(".nav-dropdown");
+
+        if (!(poolDropdown instanceof HTMLDetailsElement)) {
+            throw new Error("Не знайдено dropdown меню «Басейн».");
+        }
+
+        document.addEventListener("click", (event) => {
+            if (!(event.target instanceof Element)) {
+                return;
+            }
+
+            const clickedLink = event.target.closest("a");
+            if (clickedLink && poolDropdown.contains(clickedLink)) {
+                if (clickedLink.getAttribute("href") === "#") {
+                    event.preventDefault();
+                }
+                poolDropdown.open = false;
+                return;
+            }
+
+            if (!poolDropdown.contains(event.target)) {
+                poolDropdown.open = false;
+            }
+        });
+    </script>
+</body>
+</html>

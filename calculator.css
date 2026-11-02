@@ -1,0 +1,587 @@
+@property --per-visit {
+    syntax: "<integer>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --total {
+    syntax: "<integer>";
+    inherits: true;
+    initial-value: 0;
+}
+
+:root {
+    --price-base: 150;
+    --add-group: 80;
+    --add-solo: 350;
+    --add-trainer-1: 0;
+    --add-trainer-2: 60;
+    --add-trainer-3: 120;
+    --extra-sauna: 300;
+    --extra-towel: 120;
+    --extra-locker: 90;
+    --extra-freeze: 150;
+    --calc-gap: var(--spacing-4);
+    --calc-gap-large: var(--spacing-6);
+    --calc-page-space: var(--spacing-8);
+    --calc-option-space: var(--spacing-4);
+    --calc-option-space-small: var(--spacing-2);
+    --calc-border-radius: var(--radius-medium);
+    --calc-border-width: var(--border-width);
+    --calc-option-min-width: 140px;
+    --calc-date-width: 100%;
+    --calc-summary-width: 280px;
+    --calc-summary-top: calc(var(--header-height) + var(--spacing-4));
+}
+
+.calc-page {
+    width: min(var(--content-width), calc(100% - var(--container-gutter) - var(--container-gutter)));
+    margin-inline: auto;
+    padding-block: var(--calc-page-space);
+}
+
+.calc-page .section-title {
+    margin-bottom: var(--spacing-3);
+}
+
+.calc-intro {
+    max-width: var(--content-width);
+    margin-bottom: var(--calc-gap-large);
+    color: var(--color-text-secondary);
+}
+
+.calc-form {
+    --fmt-add: 0;
+    --aud-pct: 100;
+    --trainer-add: var(--add-trainer-1);
+    --visits: 8;
+    --term-pct: 100;
+    --disc-pct: 5;
+    --sauna-sum: 0;
+    --towel-sum: 0;
+    --locker-sum: 0;
+    --freeze-sum: 0;
+    --extras-sum: calc(var(--sauna-sum) + var(--towel-sum) + var(--locker-sum) + var(--freeze-sum));
+    --per-visit: calc(var(--price-base) * var(--aud-pct) / 100 + var(--fmt-add) + var(--trainer-add));
+    --total: calc(var(--per-visit) * var(--visits) * var(--term-pct) / 100 * (100 - var(--disc-pct)) / 100 + var(--extras-sum));
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(var(--calc-summary-width), 0.75fr);
+    align-items: start;
+    gap: var(--calc-gap-large);
+}
+
+.form-steps {
+    display: grid;
+    gap: var(--calc-gap);
+    min-width: 0;
+    counter-reset: calc-step;
+}
+
+.form-step,
+.confirm-step {
+    min-width: 0;
+    margin: 0;
+    padding: var(--calc-option-space);
+    border: var(--calc-border-width) solid var(--color-border-ui);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+}
+
+.form-step {
+    counter-increment: calc-step;
+}
+
+.form-step > legend {
+    padding-inline: var(--calc-option-space-small);
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lead);
+    font-weight: var(--font-weight-bold);
+}
+
+.form-step > legend::before {
+    color: var(--color-turquoise);
+    content: counter(calc-step) ". ";
+}
+
+.format-groups {
+    display: grid;
+    gap: var(--calc-gap);
+}
+
+.format-group,
+.time-group {
+    min-width: 0;
+    margin: 0;
+    padding: var(--calc-option-space-small);
+    border: var(--calc-border-width) solid var(--color-border-ui);
+    border-radius: var(--calc-border-radius);
+}
+
+.format-group > legend,
+.time-group > legend {
+    padding-inline: var(--calc-option-space-small);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--calc-option-min-width)), 1fr));
+    gap: var(--calc-gap);
+}
+
+.choice-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.choice-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.choice-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-card,
+.time-chip,
+.agreement {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 100%;
+    align-items: center;
+    gap: var(--calc-option-space-small);
+    padding: var(--calc-option-space);
+    border: var(--calc-border-width) solid var(--color-border-ui);
+    border-radius: var(--calc-border-radius);
+    background: var(--color-surface-raised);
+    cursor: pointer;
+    transition: border-color var(--transition-standard), background-color var(--transition-standard);
+}
+
+.choice-card:has(.choice-input:checked),
+.time-chip:has(.choice-input:checked),
+.agreement:has(.choice-input:checked) {
+    border-color: var(--color-turquoise);
+    background: var(--color-surface);
+}
+
+.choice-card:hover,
+.time-chip:hover,
+.agreement:hover {
+    border-color: var(--color-turquoise);
+}
+
+.choice-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.choice-input:focus-visible + .choice-copy {
+    outline: 3px solid var(--color-outline);
+    outline-offset: var(--spacing-1);
+}
+
+.choice-copy {
+    display: grid;
+    min-width: 0;
+    gap: var(--calc-option-space-small);
+    border-radius: var(--calc-border-radius);
+}
+
+.choice-title {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.choice-description,
+.price-annotation {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+}
+
+.price-annotation {
+    --price-label: 0;
+}
+
+.price-annotation::before {
+    counter-reset: option-price var(--price-label);
+    content: "+" counter(option-price) " ₴ / заняття";
+}
+
+.price-extra::before {
+    content: "+" counter(option-price) " ₴";
+}
+
+.price-add-group {
+    --price-label: var(--add-group);
+}
+
+.price-add-solo {
+    --price-label: var(--add-solo);
+}
+
+.price-add-trainer-1 {
+    --price-label: var(--add-trainer-1);
+}
+
+.price-add-trainer-2 {
+    --price-label: var(--add-trainer-2);
+}
+
+.price-add-trainer-3 {
+    --price-label: var(--add-trainer-3);
+}
+
+.price-add-sauna {
+    --price-label: var(--extra-sauna);
+}
+
+.price-add-towel {
+    --price-label: var(--extra-towel);
+}
+
+.price-add-locker {
+    --price-label: var(--extra-locker);
+}
+
+.price-add-freeze {
+    --price-label: var(--extra-freeze);
+}
+
+.pool-notice {
+    margin-bottom: var(--calc-gap);
+    padding: var(--calc-option-space-small) var(--calc-option-space);
+    border: var(--calc-border-width) solid var(--color-border-ui);
+    border-radius: var(--calc-border-radius);
+    background: var(--color-surface-raised);
+    color: var(--color-text-secondary);
+}
+
+.summary-card {
+    position: sticky;
+    top: var(--calc-summary-top);
+    gap: var(--calc-gap);
+}
+
+.summary-title {
+    font-size: var(--font-size-h3);
+}
+
+.base-price {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+}
+
+.price-base {
+    margin-left: var(--calc-option-space-small);
+    color: var(--color-turquoise);
+    font-weight: var(--font-weight-bold);
+}
+
+.price-base::before {
+    counter-reset: base-price var(--price-base);
+    content: counter(base-price) " ₴ / відвідування";
+}
+
+.summary-list {
+    display: grid;
+    gap: var(--calc-option-space-small);
+    padding-block: var(--calc-option-space-small);
+    border-block: var(--calc-border-width) solid var(--color-border-ui);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+}
+
+.summary-row {
+    display: none;
+}
+
+.summary-total-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+}
+
+.price-total {
+    color: var(--color-turquoise);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-emphasis);
+    font-weight: var(--font-weight-bold);
+}
+
+.price-total::before {
+    counter-reset: total var(--total);
+    content: counter(total) " ₴";
+}
+
+.price-per-visit {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+}
+
+.price-per-visit::before {
+    counter-reset: per-visit var(--per-visit);
+    content: "≈ " counter(per-visit) " ₴ за відвідування";
+}
+
+.date-label {
+    display: block;
+    margin-bottom: var(--calc-option-space-small);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.date-input {
+    width: var(--calc-date-width);
+    min-height: var(--spacing-8);
+    margin-bottom: var(--calc-gap);
+    padding: var(--calc-option-space-small) var(--calc-option-space);
+    border: var(--calc-border-width) solid var(--color-border-ui);
+    border-radius: var(--calc-border-radius);
+    background: var(--color-surface-raised);
+    color: var(--color-text-primary);
+    font: inherit;
+}
+
+.time-group {
+    display: grid;
+    gap: var(--calc-gap);
+}
+
+.time-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--calc-option-space-small);
+}
+
+.time-chip {
+    min-width: var(--spacing-9);
+    min-height: var(--spacing-8);
+    flex: 0 0 auto;
+    justify-content: center;
+    padding: var(--calc-option-space-small) var(--calc-option-space);
+}
+
+.time-chip .choice-copy {
+    display: block;
+}
+
+.agreement {
+    margin-bottom: var(--calc-gap);
+    color: var(--color-text-secondary);
+}
+
+.confirm-disabled,
+.confirm-link {
+    width: 100%;
+}
+
+.calc-form .confirm-link {
+    display: none;
+}
+
+.calc-form:has(#agree:checked) .confirm-disabled {
+    display: none;
+}
+
+.calc-form:has(#agree:checked) .confirm-link {
+    display: inline-flex;
+}
+
+.calc-form:has(input[name="format"][value^="self"]:checked) .trainer-step {
+    display: none;
+}
+
+.calc-form:has(input[name="format"][value^="self"]:checked) .time-group {
+    display: none;
+}
+
+.calc-form:has(#fmt-self-adult:checked) {
+    --fmt-add: 0;
+    --aud-pct: 100;
+}
+
+.calc-form:has(#fmt-self-kids:checked) {
+    --fmt-add: 0;
+    --aud-pct: 90;
+}
+
+.calc-form:has(#fmt-group-adult:checked) {
+    --fmt-add: var(--add-group);
+    --aud-pct: 100;
+}
+
+.calc-form:has(#fmt-group-kids:checked) {
+    --fmt-add: var(--add-group);
+    --aud-pct: 90;
+}
+
+.calc-form:has(#fmt-solo-adult:checked) {
+    --fmt-add: var(--add-solo);
+    --aud-pct: 100;
+}
+
+.calc-form:has(#fmt-solo-kids:checked) {
+    --fmt-add: var(--add-solo);
+    --aud-pct: 90;
+}
+
+.calc-form:has(#trainer-1:checked) {
+    --trainer-add: var(--add-trainer-1);
+}
+
+.calc-form:has(#trainer-2:checked) {
+    --trainer-add: var(--add-trainer-2);
+}
+
+.calc-form:has(#trainer-3:checked) {
+    --trainer-add: var(--add-trainer-3);
+}
+
+.calc-form:has(#fmt-self-adult:checked, #fmt-self-kids:checked) {
+    --trainer-add: 0;
+}
+
+.calc-form:has(#visits-4:checked) {
+    --visits: 4;
+    --disc-pct: 0;
+}
+
+.calc-form:has(#visits-8:checked) {
+    --visits: 8;
+    --disc-pct: 5;
+}
+
+.calc-form:has(#visits-12:checked) {
+    --visits: 12;
+    --disc-pct: 10;
+}
+
+.calc-form:has(#visits-24:checked) {
+    --visits: 24;
+    --disc-pct: 15;
+}
+
+.calc-form:has(#term-1:checked) {
+    --term-pct: 100;
+}
+
+.calc-form:has(#term-2:checked) {
+    --term-pct: 105;
+}
+
+.calc-form:has(#term-3:checked) {
+    --term-pct: 109;
+}
+
+.calc-form:has(#extra-sauna:checked) {
+    --sauna-sum: var(--extra-sauna);
+}
+
+.calc-form:has(#extra-towel:checked) {
+    --towel-sum: var(--extra-towel);
+}
+
+.calc-form:has(#extra-locker:checked) {
+    --locker-sum: var(--extra-locker);
+}
+
+.calc-form:has(#extra-freeze:checked) {
+    --freeze-sum: var(--extra-freeze);
+}
+
+.calc-form:has(#fmt-self-adult:checked) .sum-format-self-adult,
+.calc-form:has(#fmt-self-kids:checked) .sum-format-self-kids,
+.calc-form:has(#fmt-group-adult:checked) .sum-format-group-adult,
+.calc-form:has(#fmt-group-kids:checked) .sum-format-group-kids,
+.calc-form:has(#fmt-solo-adult:checked) .sum-format-solo-adult,
+.calc-form:has(#fmt-solo-kids:checked) .sum-format-solo-kids,
+.calc-form:has(#visits-4:checked) .sum-visits-4,
+.calc-form:has(#visits-8:checked) .sum-visits-8,
+.calc-form:has(#visits-12:checked) .sum-visits-12,
+.calc-form:has(#visits-24:checked) .sum-visits-24,
+.calc-form:has(#term-1:checked) .sum-term-1,
+.calc-form:has(#term-2:checked) .sum-term-2,
+.calc-form:has(#term-3:checked) .sum-term-3,
+.calc-form:has(#extra-sauna:checked) .sum-extra-sauna,
+.calc-form:has(#extra-towel:checked) .sum-extra-towel,
+.calc-form:has(#extra-locker:checked) .sum-extra-locker,
+.calc-form:has(#extra-freeze:checked) .sum-extra-freeze {
+    display: list-item;
+}
+
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#trainer-1:checked) .sum-trainer-1,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#trainer-2:checked) .sum-trainer-2,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#trainer-3:checked) .sum-trainer-3,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-07:checked) .sum-time-07,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-10:checked) .sum-time-10,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-14:checked) .sum-time-14,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-18:checked) .sum-time-18,
+.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-20:checked) .sum-time-20 {
+    display: list-item;
+}
+
+.confirmation {
+    display: none;
+    gap: var(--calc-gap);
+    padding-top: var(--calc-option-space);
+    border-top: var(--calc-border-width) solid var(--color-border-ui);
+}
+
+.confirmation:target {
+    display: grid;
+}
+
+.confirmation-title {
+    font-size: var(--font-size-h3);
+}
+
+.confirmation-total {
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+    .calc-form {
+        grid-template-columns: minmax(0, 1fr) minmax(var(--calc-summary-width), 0.8fr);
+        gap: var(--calc-gap);
+    }
+
+    .choice-grid--four {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .calc-form {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        position: static;
+    }
+
+    .choice-grid--three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 420px) {
+    .calc-page {
+        width: calc(100% - var(--container-gutter) - var(--container-gutter));
+    }
+
+    .choice-grid--two,
+    .choice-grid--three,
+    .choice-grid--four {
+        grid-template-columns: 1fr;
+    }
+
+    .form-step {
+        padding: var(--calc-option-space-small);
+    }
+}

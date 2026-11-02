@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Зберіть власний абонемент басейну ВОДАН і перегляньте його розрахункову вартість.">
+    <title>Розрахунок абонементу — ВОДАН</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+        theme: {
+          extend: {
+            colors: {
+              vodanBg: '#0A111E',
+              vodanCard: '#0D1B2A',
+              vodanAccent: '#00C2D1',
+              vodanText: '#F4F8FA',
+            },
+            fontFamily: {
+              sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+              heading: ['Montserrat', 'Segoe UI', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header" id="home">
+        <a class="logo" href="index.html" aria-label="ВОДАН — на головну"><img src="assets/icons/logo.svg" alt="Логотип ВОДАН"></a>
+        <nav class="nav" aria-label="Головна навігація">
+            <a class="nav-item" href="index.html">Головна</a>
+            <details class="nav-dropdown">
+                <summary class="nav-item">Басейн <span aria-hidden="true">▾</span></summary>
+                <div class="dropdown-menu">
+                    <a class="dropdown-link" href="index.html#subscriptions">Абонементи</a>
+                    <a class="dropdown-link" href="rozklad.html">Розклад</a>
+                    <a class="dropdown-link" href="trener.html">Тренери</a>
+                    <a class="dropdown-link" href="bron.html">Бронювання</a>
+                    <a class="dropdown-link" href="calculator.html" aria-current="page">Розрахунок абонементу</a>
+                    <a class="dropdown-link" href="index.html#about">Про ВОДАН</a>
+                </div>
+            </details>
+            <a class="nav-item" href="spa.html">SPA</a>
+            <a class="nav-item" href="index.html#contacts">Контакти</a>
+        </nav>
+        <details class="mobile-nav">
+            <summary aria-label="Відкрити меню навігації">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </summary>
+            <nav aria-label="Мобільна навігація">
+                <a href="index.html">Головна</a>
+                <a href="index.html#subscriptions">Абонементи</a>
+                <a href="rozklad.html">Розклад</a>
+                <a href="trener.html">Тренери</a>
+                <a href="bron.html">Бронювання</a>
+                <a href="spa.html">SPA</a>
+                <a href="calculator.html" aria-current="page">Розрахунок абонементу</a>
+                <a href="index.html#about">Про ВОДАН</a>
+                <a href="index.html#contacts">Контакти</a>
+            </nav>
+        </details>
+        <button class="theme-switcher" type="button" aria-label="Змінити тему"></button>
+    </header>
+
+    <main class="main-content">
+        <section class="calc-page" aria-labelledby="calc-title">
+            <h1 class="section-title" id="calc-title">Розрахунок абонементу</h1>
+            <p class="calc-intro">Оберіть формат, кількість відвідувань і додаткові послуги. Вартість розраховується автоматично.</p>
+
+            <form class="calc-form" id="top" aria-labelledby="calc-title">
+                <div class="form-steps">
+                    <fieldset class="form-step">
+                        <legend>Формат занять</legend>
+                        <div class="format-groups">
+                            <fieldset class="format-group">
+                                <legend>Вільне плавання</legend>
+                                <div class="choice-grid">
+                                    <label class="choice-card">
+                                        <input class="choice-input" type="radio" name="format" id="fmt-self-adult" value="self:adult">
+                                        <span class="choice-copy">
+                                            <span class="choice-title">Доросле</span>
+                                            <span class="choice-description">Самостійне плавання</span>
+                                        </span>
+                                    </label>
+                                    <label class="choice-card">
+                                        <input class="choice-input" type="radio" name="format" id="fmt-self-kids" value="self:kids">
+                                        <span class="choice-copy">
+                                            <span class="choice-title">Дитяче</span>
+                                            <span class="choice-description">Самостійне плавання</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="format-group">
+                                <legend>Групові заняття</legend>
+                                <div class="choice-grid">
+                                    <label class="choice-card">
+                                        <input class="choice-input" type="radio" name="format" id="fmt-group-adult" value="group:adult" checked>
+                                        <span class="choice-copy">
+                                            <span class="choice-title">Доросле</span>
+                                            <span class="choice-description">Групове тренування</span>
+                                            <span class="price-annotation price-add-group"></span>
+                                        </span>
+                                    </label>
+                                    <label class="choice-card">
+                                        <input class="choice-input" type="radio" name="format" id="fmt-group-kids" value="group:kids">
+                                        <span class="choice-copy">
+                                            <span class="choice-title">Дитяче</span>
+                                            <span class="choice-description">Групове тренування</span>
+                                            <span class="price-annotation price-add-group"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="format-group">
+                                <legend>Індивідуальні заняття з тренером</legend>
+                                <div class="choice-grid">
+                                    <label class="choice-card">
+                                        <input class="choice-input" type="radio" name="format" id="fmt-solo-adult" value="solo:adult">
+                                        <span class="choice-copy">
+                                            <span class="choice-title">Доросле</span>
+                                            <span class="choice-description">Персональне тренування</span>
+                                            <span class="price-annotation price-add-solo"></span>
+                                        </span>
+                                    </label>
+                                    <label class="choice-card">
+                                        <input class="choice-input" type="radio" name="format" id="fmt-solo-kids" value="solo:kids">
+                                        <span class="choice-copy">
+                                            <span class="choice-title">Дитяче</span>
+                                            <span class="choice-description">Персональне тренування</span>
+                                            <span class="price-annotation price-add-solo"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-step trainer-step">
+                        <legend>Тренер</legend>
+                        <div class="choice-grid choice-grid--three">
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="trainer" id="trainer-1" value="1" checked>
+                                <span class="choice-copy">
+                                    <span class="choice-title">Тренер 1</span>
+                                    <span class="price-annotation price-add-trainer-1"></span>
+                                </span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="trainer" id="trainer-2" value="2">
+                                <span class="choice-copy">
+                                    <span class="choice-title">Тренер 2</span>
+                                    <span class="price-annotation price-add-trainer-2"></span>
+                                </span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="trainer" id="trainer-3" value="3">
+                                <span class="choice-copy">
+                                    <span class="choice-title">Тренер 3</span>
+                                    <span class="price-annotation price-add-trainer-3"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-step">
+                        <legend>Кількість відвідувань</legend>
+                        <div class="choice-grid choice-grid--four">
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="visits" id="visits-4" value="4">
+                                <span class="choice-copy"><span class="choice-title">4 відвідування</span></span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="visits" id="visits-8" value="8" checked>
+                                <span class="choice-copy"><span class="choice-title">8 відвідувань</span></span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="visits" id="visits-12" value="12">
+                                <span class="choice-copy"><span class="choice-title">12 відвідувань</span></span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="visits" id="visits-24" value="24">
+                                <span class="choice-copy"><span class="choice-title">24 відвідування</span></span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-step">
+                        <legend>Термін дії</legend>
+                        <div class="choice-grid choice-grid--three">
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="term" id="term-1" value="1" checked>
+                                <span class="choice-copy"><span class="choice-title">1 місяць</span></span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="term" id="term-2" value="2">
+                                <span class="choice-copy"><span class="choice-title">2 місяці</span></span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="radio" name="term" id="term-3" value="3">
+                                <span class="choice-copy"><span class="choice-title">3 місяці</span></span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-step">
+                        <legend>Додаткові послуги</legend>
+                        <div class="choice-grid choice-grid--two">
+                            <label class="choice-card">
+                                <input class="choice-input" type="checkbox" name="extras" id="extra-sauna" value="sauna">
+                                <span class="choice-copy">
+                                    <span class="choice-title">Сауна</span>
+                                    <span class="price-annotation price-extra price-add-sauna"></span>
+                                </span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="checkbox" name="extras" id="extra-towel" value="towel">
+                                <span class="choice-copy">
+                                    <span class="choice-title">Рушник і халат</span>
+                                    <span class="price-annotation price-extra price-add-towel"></span>
+                                </span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="checkbox" name="extras" id="extra-locker" value="locker">
+                                <span class="choice-copy">
+                                    <span class="choice-title">Шафка</span>
+                                    <span class="price-annotation price-extra price-add-locker"></span>
+                                </span>
+                            </label>
+                            <label class="choice-card">
+                                <input class="choice-input" type="checkbox" name="extras" id="extra-freeze" value="freeze">
+                                <span class="choice-copy">
+                                    <span class="choice-title">Заморозка</span>
+                                    <span class="price-annotation price-extra price-add-freeze"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-step">
+                        <legend>Дата початку та час</legend>
+                        <label class="date-label" for="start-date">Дата початку абонементу</label>
+                        <input class="date-input" type="date" id="start-date" name="start-date">
+                        <fieldset class="time-group">
+                            <legend>Час відвідування</legend>
+                            <div class="time-options flex flex-wrap gap-2">
+                                <label class="time-chip">
+                                    <input class="choice-input" type="radio" name="time" id="time-07" value="07:00" checked>
+                                    <span class="choice-copy">07:00</span>
+                                </label>
+                                <label class="time-chip">
+                                    <input class="choice-input" type="radio" name="time" id="time-10" value="10:00">
+                                    <span class="choice-copy">10:00</span>
+                                </label>
+                                <label class="time-chip">
+                                    <input class="choice-input" type="radio" name="time" id="time-14" value="14:00">
+                                    <span class="choice-copy">14:00</span>
+                                </label>
+                                <label class="time-chip">
+                                    <input class="choice-input" type="radio" name="time" id="time-18" value="18:00">
+                                    <span class="choice-copy">18:00</span>
+                                </label>
+                                <label class="time-chip">
+                                    <input class="choice-input" type="radio" name="time" id="time-20" value="20:00">
+                                    <span class="choice-copy">20:00</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+
+                    <fieldset class="confirm-step">
+                        <legend>Підтвердження</legend>
+                        <label class="agreement" for="agree">
+                            <input class="choice-input" type="checkbox" id="agree" name="agree">
+                            <span class="choice-copy">Я перевірив(-ла) параметри абонемента й погоджуюсь з ціною</span>
+                        </label>
+                        <button class="btn btn--primary confirm-disabled" type="button" disabled>Підтвердити конфігурацію</button>
+                        <a class="btn btn--primary confirm-link" href="#confirmation">Підтвердити конфігурацію</a>
+                    </fieldset>
+                </div>
+
+                <aside class="card summary-card" aria-labelledby="summary-title">
+                    <p class="pool-notice"><strong>Басейн:</strong> Спортивний 50 м</p>
+                    <h2 class="summary-title" id="summary-title">Ваш абонемент</h2>
+                    <p class="base-price">Базова ціна <output class="price-base" aria-label="Базова ціна за відвідування"></output></p>
+                    <ul class="summary-list">
+                        <li class="summary-row sum-format-self-adult">Вільне плавання, доросле</li>
+                        <li class="summary-row sum-format-self-kids">Вільне плавання, дитяче</li>
+                        <li class="summary-row sum-format-group-adult">Групові заняття, доросле</li>
+                        <li class="summary-row sum-format-group-kids">Групові заняття, дитяче</li>
+                        <li class="summary-row sum-format-solo-adult">Індивідуальні заняття, доросле</li>
+                        <li class="summary-row sum-format-solo-kids">Індивідуальні заняття, дитяче</li>
+                        <li class="summary-row sum-trainer-1">Тренер 1</li>
+                        <li class="summary-row sum-trainer-2">Тренер 2</li>
+                        <li class="summary-row sum-trainer-3">Тренер 3</li>
+                        <li class="summary-row sum-visits-4">4 відвідування</li>
+                        <li class="summary-row sum-visits-8">8 відвідувань</li>
+                        <li class="summary-row sum-visits-12">12 відвідувань</li>
+                        <li class="summary-row sum-visits-24">24 відвідування</li>
+                        <li class="summary-row sum-term-1">Термін: 1 місяць</li>
+                        <li class="summary-row sum-term-2">Термін: 2 місяці</li>
+                        <li class="summary-row sum-term-3">Термін: 3 місяці</li>
+                        <li class="summary-row sum-extra-sauna">Сауна</li>
+                        <li class="summary-row sum-extra-towel">Рушник і халат</li>
+                        <li class="summary-row sum-extra-locker">Шафка</li>
+                        <li class="summary-row sum-extra-freeze">Заморозка</li>
+                        <li class="summary-row sum-time-07">Час: 07:00</li>
+                        <li class="summary-row sum-time-10">Час: 10:00</li>
+                        <li class="summary-row sum-time-14">Час: 14:00</li>
+                        <li class="summary-row sum-time-18">Час: 18:00</li>
+                        <li class="summary-row sum-time-20">Час: 20:00</li>
+                    </ul>
+                    <p class="summary-total-label">Загальна вартість</p>
+                    <output class="price-total" aria-label="Загальна розрахункова вартість"></output>
+                    <output class="price-per-visit" aria-label="Орієнтовна вартість одного відвідування"></output>
+                    <section class="confirmation" id="confirmation" aria-labelledby="confirmation-title">
+                        <h2 class="confirmation-title" id="confirmation-title">Конфігурацію підтверджено</h2>
+                        <p>Розрахунок збережено на цій сторінці. Оплата не проводиться.</p>
+                        <p class="confirmation-total">Підсумкова вартість: <output class="price-total" aria-label="Загальна розрахункова вартість"></output></p>
+                        <a class="btn btn--secondary" href="#top">Змінити параметри</a>
+                    </section>
+                </aside>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <section class="footer-col" aria-label="Про комплекс">
+            <h2 class="footer-brand">ВОДАН</h2>
+            <p class="footer-desc">Спортивно-оздоровчий комплекс</p>
+            <p class="footer-hours">Пн–Нд 08:00–22:00</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-contacts-title">
+            <h2 class="footer-col-title" id="footer-contacts-title">Контакти</h2>
+            <p class="footer-info">м. Львів, вул. Пасічна, 87</p>
+            <a class="footer-info" href="tel:+380686175494">+38 (068) 617-54-94</a>
+            <p class="footer-info">Email</p>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-social-title">
+            <h2 class="footer-col-title" id="footer-social-title">Соцмережі</h2>
+            <a class="footer-link" href="https://www.instagram.com/vodan_pool/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <p class="footer-link">Telegram</p>
+        </section>
+    </footer>
+</body>
+</html>

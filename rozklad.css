@@ -1,0 +1,54 @@
+.schedule-scroll {
+    scrollbar-color: #00C2D1 #0D1B2A;
+    scrollbar-width: thin;
+}
+
+.schedule-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.schedule-scroll::-webkit-scrollbar-track {
+    background: #0D1B2A;
+}
+
+.schedule-scroll::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #00C2D1;
+}
+
+.schedule-event {
+    display: flex;
+    min-height: 72px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    border-left: 2px solid;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.schedule-event strong {
+    color: #F4F8FA;
+    font-weight: 600;
+}
+
+.schedule-event span {
+    color: #A8B7C7;
+}
+
+.schedule-event--free {
+    border-color: #00C2D1;
+    background: rgba(0, 194, 209, 0.1);
+}
+
+.schedule-event--group {
+    border-color: #A78BFA;
+    background: rgba(167, 139, 250, 0.1);
+}
+
+.schedule-event--individual {
+    border-color: #FBBF24;
+    background: rgba(251, 191, 36, 0.1);
+}
