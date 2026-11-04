@@ -57,12 +57,25 @@
     border-radius: var(--radius-card);
     background: var(--color-surface);
     box-shadow: var(--shadow-card-ui);
-    transition: border-color var(--transition-standard), transform var(--transition-standard);
+    transition: border-color var(--transition-standard), transform var(--transition-standard), box-shadow var(--transition-standard);
+    will-change: transform, box-shadow, border-color;
 }
 
-.trainer-card:hover {
-    border-color: var(--color-turquoise);
-    transform: translateY(-4px);
+@media (hover: hover) and (pointer: fine) {
+    .trainer-card:hover,
+    .trainer-card:focus-within {
+        border-color: rgba(0, 194, 209, 0.9);
+        box-shadow: 0 18px 38px rgba(0, 194, 209, 0.18), 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .trainer-card:hover,
+    .trainer-card:focus-within {
+        transform: none;
+        box-shadow: var(--shadow-card-ui);
+        border-color: var(--color-border-ui);
+    }
 }
 
 .trainer-photo {
@@ -171,6 +184,26 @@
     border: var(--border-width) solid var(--color-border-ui);
     border-radius: var(--radius-card);
     background: var(--color-surface);
+    box-shadow: var(--shadow-card-ui);
+    transition: border-color var(--transition-standard), transform var(--transition-standard), box-shadow var(--transition-standard);
+    will-change: transform, box-shadow, border-color;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .recommendation-card:hover,
+    .recommendation-card:focus-within {
+        border-color: rgba(0, 194, 209, 0.9);
+        box-shadow: 0 18px 38px rgba(0, 194, 209, 0.18), 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .recommendation-card:hover,
+    .recommendation-card:focus-within {
+        transform: none;
+        box-shadow: var(--shadow-card-ui);
+        border-color: var(--color-border-ui);
+    }
 }
 
 .recommendation-card h3 {
