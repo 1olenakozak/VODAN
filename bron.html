@@ -146,8 +146,33 @@
                             <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
                                 <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl"><span class="text-[#00C2D1]">3.</span> Ваші дані</legend>
                                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="lane-name">Ім’я<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-name" name="lane-name" type="text" autocomplete="name" placeholder="Введіть ім’я"></label>
-                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="lane-phone">Телефон<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-phone" name="lane-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __"></label>
+                                    <div class="grid gap-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="lane-name">Ім’я</label>
+                                        <input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-name" name="lane-name" type="text" autocomplete="name" placeholder="Введіть ім’я" required>
+                                        <p id="lane-nameError" class="hidden text-xs text-[#FF8A8A]">Введіть ваше ім’я.</p>
+                                    </div>
+                                    <div class="grid gap-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="lane-email">Email</label>
+                                        <input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-email" name="lane-email" type="email" autocomplete="email" placeholder="name@example.com" required>
+                                        <p id="lane-emailError" class="hidden text-xs text-[#FF8A8A]">Введіть коректну електронну адресу.</p>
+                                    </div>
+                                    <div class="grid gap-2 sm:col-span-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="lane-phone">Телефон</label>
+                                        <input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-phone" name="lane-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required>
+                                        <p id="lane-phoneError" class="hidden text-xs text-[#FF8A8A]">Введіть номер телефону.</p>
+                                    </div>
+                                    <div class="grid gap-2 sm:col-span-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="lane-message">Коментар / Повідомлення</label>
+                                        <textarea class="min-h-[110px] w-full resize-y rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="lane-message" name="lane-message" rows="4" placeholder="Опишіть ваші побажання або уточнення..." required></textarea>
+                                        <p id="lane-messageError" class="hidden text-xs text-[#FF8A8A]">Напишіть коротке повідомлення.</p>
+                                    </div>
+                                    <div class="grid gap-2 sm:col-span-2">
+                                        <label class="flex items-start gap-3 rounded-lg border border-white/10 bg-[#0A111E] p-3 text-sm text-[#A8B7C7]" for="lane-privacy">
+                                            <input class="mt-1 h-4 w-4 accent-[#00C2D1]" id="lane-privacy" name="lane-privacy" type="checkbox" required>
+                                            <span>Я даю згоду на обробку персональних даних для бронювання та підтвердження запису.</span>
+                                        </label>
+                                        <p id="lane-privacyError" class="hidden text-xs text-[#FF8A8A]">Потрібна згода на обробку персональних даних.</p>
+                                    </div>
                                 </div>
                                 <p class="mb-2 mt-4 text-xs text-[#A8B7C7]">Кількість людей на доріжці</p>
                                 <div class="grid grid-cols-4 gap-2">
@@ -202,8 +227,33 @@
                             <fieldset class="min-w-0 rounded-2xl border border-white/10 bg-[#0D1B2A] p-4 sm:p-6">
                                 <legend class="px-2 font-heading text-lg font-bold text-[#F4F8FA] sm:text-xl"><span class="text-[#00C2D1]">3.</span> Ваші дані</legend>
                                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="class-name">Ім’я<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-name" name="class-name" type="text" autocomplete="name" placeholder="Введіть ім’я"></label>
-                                    <label class="grid gap-2 text-xs text-[#A8B7C7]" for="class-phone">Телефон<input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-phone" name="class-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __"></label>
+                                    <div class="grid gap-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="class-name">Ім’я</label>
+                                        <input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-name" name="class-name" type="text" autocomplete="name" placeholder="Введіть ім’я" required>
+                                        <p id="class-nameError" class="hidden text-xs text-[#FF8A8A]">Введіть ваше ім’я.</p>
+                                    </div>
+                                    <div class="grid gap-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="class-email">Email</label>
+                                        <input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-email" name="class-email" type="email" autocomplete="email" placeholder="name@example.com" required>
+                                        <p id="class-emailError" class="hidden text-xs text-[#FF8A8A]">Введіть коректну електронну адресу.</p>
+                                    </div>
+                                    <div class="grid gap-2 sm:col-span-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="class-phone">Телефон</label>
+                                        <input class="w-full min-w-0 rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-phone" name="class-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required>
+                                        <p id="class-phoneError" class="hidden text-xs text-[#FF8A8A]">Введіть номер телефону.</p>
+                                    </div>
+                                    <div class="grid gap-2 sm:col-span-2">
+                                        <label class="text-xs text-[#A8B7C7]" for="class-message">Коментар / Повідомлення</label>
+                                        <textarea class="min-h-[110px] w-full resize-y rounded-lg border border-white/10 bg-[#0A111E] px-3 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] focus:border-[#00C2D1] focus:outline-none focus:ring-1 focus:ring-[#00C2D1]" id="class-message" name="class-message" rows="4" placeholder="Опишіть ваші побажання або уточнення..." required></textarea>
+                                        <p id="class-messageError" class="hidden text-xs text-[#FF8A8A]">Напишіть коротке повідомлення.</p>
+                                    </div>
+                                    <div class="grid gap-2 sm:col-span-2">
+                                        <label class="flex items-start gap-3 rounded-lg border border-white/10 bg-[#0A111E] p-3 text-sm text-[#A8B7C7]" for="class-privacy">
+                                            <input class="mt-1 h-4 w-4 accent-[#00C2D1]" id="class-privacy" name="class-privacy" type="checkbox" required>
+                                            <span>Я даю згоду на обробку персональних даних для бронювання та підтвердження запису.</span>
+                                        </label>
+                                        <p id="class-privacyError" class="hidden text-xs text-[#FF8A8A]">Потрібна згода на обробку персональних даних.</p>
+                                    </div>
                                 </div>
                             </fieldset>
                         </div>
@@ -220,6 +270,9 @@
                             <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Час</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-time">11:00–12:00</dd></div>
                             <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Доріжка</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-number">№ 1</dd></div>
                             <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Людей</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-guests">1</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Ім’я</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-name">—</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Телефон</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-phone">—</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Email</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="lane-summary-email">—</dd></div>
                         </dl>
                         <p class="mt-4 text-xs text-[#A8B7C7]">До сплати</p>
                         <p class="font-heading text-3xl font-extrabold text-[#00C2D1]">150 ₴</p>
@@ -234,6 +287,9 @@
                             <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Тренер</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-trainer">Іван Мельник</dd></div>
                             <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Дата</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-date">Середа, 28 жовтня</dd></div>
                             <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Час</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-time">07:00–07:45</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Ім’я</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-name">—</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Телефон</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-phone">—</dd></div>
+                            <div class="flex justify-between gap-3 border-b border-white/10 pb-2"><dt class="text-[#A8B7C7]">Email</dt><dd class="text-right font-semibold text-[#F4F8FA]" id="class-summary-email">—</dd></div>
                         </dl>
                         <p class="mt-4 text-xs text-[#A8B7C7]">Вартість заняття</p>
                         <p class="font-heading text-3xl font-extrabold text-[#00C2D1]"><span id="class-summary-price">230</span> ₴</p>
