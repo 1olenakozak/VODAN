@@ -1,6 +1,7 @@
 (function () {
   const PHONE_PATTERN = /^\+380\d{9}$/;
-  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const EMAIL_PATTERN = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/;
+  const NAME_PATTERN = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'\-\s]+$/;
 
   function normalizePhoneValue(value) {
     if (!value) {
@@ -75,7 +76,7 @@
       }
 
       if (!EMAIL_PATTERN.test(value)) {
-        return 'Введіть коректну електронну адресу.';
+        return 'Введіть коректну електронну адресу на латиниці.';
       }
 
       return '';
@@ -88,6 +89,10 @@
 
       if (value.length < 2) {
         return 'Ім’я має містити мінімум 2 символи.';
+      }
+
+      if (!NAME_PATTERN.test(value)) {
+        return 'Ім’я може містити лише літери, пробіли та дефіси.';
       }
 
       return '';
@@ -195,6 +200,105 @@
     return true;
   }
 
+  function createSuccessModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'success-modal-title');
+    modal.setAttribute('aria-describedby', 'success-modal-description');
+    modal.className = 'fixed inset-0 z-50 hidden items-center justify-center bg-[#0A111E]/80 p-4 backdrop-blur-sm';
+
+    const dialog = document.createElement('div');
+    dialog.setAttribute('tabindex', '-1');
+    dialog.className = 'w-full max-w-md rounded-2xl border border-white/10 bg-[#0D1B2A] p-6 text-center shadow-2xl shadow-black/40';
+
+    const heading = document.createElement('h2');
+    heading.id = 'success-modal-title';
+    heading.className = 'font-heading text-2xl font-bold text-[#F4F8FA]';
+    heading.textContent = 'Успішно';
+
+    const text = document.createElement('p');
+    text.id = 'success-modal-description';
+    text.className = 'mt-4 text-base leading-relaxed text-[#D9E3EF]';
+    text.textContent = 'Дякуємо! Ваше повідомлення успішно надіслано.';
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'mt-6 inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00C2D1] px-5 py-3 text-base font-semibold text-[#0A111E] transition-colors duration-200 hover:bg-[#00D7E6] focus-visible:outline-none';
+    closeButton.textContent = 'Закрити';
+    closeButton.setAttribute('aria-label', 'Закрити повідомлення про успішне надсилання');
+
+    dialog.appendChild(heading);
+    dialog.appendChild(text);
+    dialog.appendChild(closeButton);
+    modal.appendChild(dialog);
+    document.body.appendChild(modal);
+
+    closeButton.addEventListener('click', hideSuccessModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        hideSuccessModal();
+      }
+    });
+
+    return { modal, closeButton };
+  }
+
+  const successModal = createSuccessModal();
+  let lastFocusedElement = null;
+
+  function showSuccessModal() {
+    lastFocusedElement = document.activeElement;
+    successModal.modal.classList.remove('hidden');
+    successModal.modal.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
+
+    const focusableSelectors = 'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])';
+    const focusableNodes = Array.from(successModal.modal.querySelectorAll(focusableSelectors));
+    const firstFocusable = focusableNodes[0];
+    const lastFocusable = focusableNodes[focusableNodes.length - 1];
+
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+
+    successModal.modal.onkeydown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        hideSuccessModal();
+        return;
+      }
+
+      if (event.key !== 'Tab') {
+        return;
+      }
+
+      if (!focusableNodes.length) {
+        event.preventDefault();
+        return;
+      }
+
+      if (event.shiftKey && document.activeElement === firstFocusable) {
+        event.preventDefault();
+        lastFocusable.focus();
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+        event.preventDefault();
+        firstFocusable.focus();
+      }
+    };
+  }
+
+  function hideSuccessModal() {
+    successModal.modal.classList.add('hidden');
+    successModal.modal.classList.remove('flex');
+    document.body.classList.remove('overflow-hidden');
+    successModal.modal.onkeydown = null;
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
+  }
+
   function attachValidation(form) {
     const fields = getFieldsToValidate(form);
 
@@ -210,7 +314,11 @@
 
       if (!isValid) {
         event.preventDefault();
+        return;
       }
+
+      event.preventDefault();
+      showSuccessModal();
     });
 
     fields.forEach((field) => {
@@ -248,6 +356,14 @@
           alert('Поставте галочку “Я даю згоду...” і заповніть всі обов’язкові поля.');
           return;
         }
+
+        const formIsValid = getFieldsToValidate(form).every((field) => !getErrorMessage(field));
+        if (!formIsValid) {
+          alert('Форма ще містить помилки. Перевірте введені дані.');
+          return;
+        }
+
+        showSuccessModal();
       });
     }
 

@@ -149,30 +149,30 @@
                                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                                     <div class="grid gap-2 success">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="lane-name">Ім’я</label>
-                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-name" name="lane-name" type="text" autocomplete="name" placeholder="Введіть ім’я" required>
-                                        <p id="lane-nameError" class="error hidden text-xs font-medium text-[#FF8A8A]">Введіть ваше ім’я.</p>
+                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-name" name="lane-name" type="text" autocomplete="name" placeholder="Введіть ім’я" required aria-describedby="lane-nameError" aria-invalid="false">
+                                        <p id="lane-nameError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Введіть ваше ім’я.</p>
                                     </div>
                                     <div class="grid gap-2 success">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="lane-email">Email</label>
-                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-email" name="lane-email" type="email" autocomplete="email" placeholder="name@example.com" required>
-                                        <p id="lane-emailError" class="error hidden text-xs font-medium text-[#FF8A8A]">Введіть коректну електронну адресу.</p>
+                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-email" name="lane-email" type="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="lane-emailError" aria-invalid="false">
+                                        <p id="lane-emailError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Введіть коректну електронну адресу.</p>
                                     </div>
                                     <div class="grid gap-2 success sm:col-span-2">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="lane-phone">Телефон</label>
-                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-phone" name="lane-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required>
-                                        <p id="lane-phoneError" class="error hidden text-xs font-medium text-[#FF8A8A]">Введіть номер телефону.</p>
+                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-phone" name="lane-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required aria-describedby="lane-phoneError" aria-invalid="false">
+                                        <p id="lane-phoneError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Введіть номер телефону.</p>
                                     </div>
                                     <div class="grid gap-2 success sm:col-span-2">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="lane-message">Коментар / Повідомлення</label>
-                                        <textarea class="min-h-[120px] w-full resize-y rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-message" name="lane-message" rows="4" placeholder="Опишіть ваші побажання або уточнення..."></textarea>
-                                        <p id="lane-messageError" class="error hidden text-xs font-medium text-[#FF8A8A]">Напишіть коротке повідомлення.</p>
+                                        <textarea class="min-h-[120px] w-full resize-y rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="lane-message" name="lane-message" rows="4" placeholder="Опишіть ваші побажання або уточнення..." aria-describedby="lane-messageError" aria-invalid="false"></textarea>
+                                        <p id="lane-messageError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Напишіть коротке повідомлення.</p>
                                     </div>
                                     <div class="grid gap-2 success sm:col-span-2">
                                         <label class="flex items-start gap-3 rounded-xl border border-white/10 bg-[#0A111E] p-3 text-sm text-[#A8B7C7] transition-colors duration-200 hover:border-white/20" for="lane-privacy">
-                                            <input class="mt-1 h-4 w-4 accent-[#A8B7C7]" id="lane-privacy" name="lane-privacy" type="checkbox" required>
+                                            <input class="mt-1 h-4 w-4 accent-[#A8B7C7]" id="lane-privacy" name="lane-privacy" type="checkbox" required aria-describedby="lane-privacyError" aria-invalid="false">
                                             <span>Я даю згоду на обробку персональних даних для бронювання та підтвердження запису.</span>
                                         </label>
-                                        <p id="lane-privacyError" class="error hidden text-xs font-medium text-[#FF8A8A]">Потрібна згода на обробку персональних даних.</p>
+                                        <p id="lane-privacyError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Потрібна згода на обробку персональних даних.</p>
                                     </div>
                                 </div>
                                 <p class="mb-2 mt-4 text-xs text-[#A8B7C7]">Кількість людей на доріжці</p>
@@ -230,30 +230,30 @@
                                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                                     <div class="grid gap-2 success">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="class-name">Ім’я</label>
-                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-name" name="class-name" type="text" autocomplete="name" placeholder="Введіть ім’я" required>
-                                        <p id="class-nameError" class="error hidden text-xs font-medium text-[#FF8A8A]">Введіть ваше ім’я.</p>
+                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-name" name="class-name" type="text" autocomplete="name" placeholder="Введіть ім’я" required aria-describedby="class-nameError" aria-invalid="false">
+                                        <p id="class-nameError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Введіть ваше ім’я.</p>
                                     </div>
                                     <div class="grid gap-2 success">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="class-email">Email</label>
-                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-email" name="class-email" type="email" autocomplete="email" placeholder="name@example.com" required>
-                                        <p id="class-emailError" class="error hidden text-xs font-medium text-[#FF8A8A]">Введіть коректну електронну адресу.</p>
+                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-email" name="class-email" type="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="class-emailError" aria-invalid="false">
+                                        <p id="class-emailError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Введіть коректну електронну адресу.</p>
                                     </div>
                                     <div class="grid gap-2 success sm:col-span-2">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="class-phone">Телефон</label>
-                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-phone" name="class-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required>
-                                        <p id="class-phoneError" class="error hidden text-xs font-medium text-[#FF8A8A]">Введіть номер телефону.</p>
+                                        <input class="min-h-[52px] w-full min-w-0 rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-phone" name="class-phone" type="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required aria-describedby="class-phoneError" aria-invalid="false">
+                                        <p id="class-phoneError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Введіть номер телефону.</p>
                                     </div>
                                     <div class="grid gap-2 success sm:col-span-2">
                                         <label class="text-xs font-medium text-[#A8B7C7]" for="class-message">Коментар / Повідомлення</label>
-                                        <textarea class="min-h-[120px] w-full resize-y rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-message" name="class-message" rows="4" placeholder="Опишіть ваші побажання або уточнення..."></textarea>
-                                        <p id="class-messageError" class="error hidden text-xs font-medium text-[#FF8A8A]">Напишіть коротке повідомлення.</p>
+                                        <textarea class="min-h-[120px] w-full resize-y rounded-xl border border-white/10 bg-[#0A111E] px-4 py-3 text-sm text-[#F4F8FA] placeholder:text-[#526273] transition-colors duration-200 hover:border-white/20 focus-visible:border-[#00C2D1]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C2D1]/20" id="class-message" name="class-message" rows="4" placeholder="Опишіть ваші побажання або уточнення..." aria-describedby="class-messageError" aria-invalid="false"></textarea>
+                                        <p id="class-messageError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Напишіть коротке повідомлення.</p>
                                     </div>
                                     <div class="grid gap-2 success sm:col-span-2">
                                         <label class="flex items-start gap-3 rounded-xl border border-white/10 bg-[#0A111E] p-3 text-sm text-[#A8B7C7] transition-colors duration-200 hover:border-white/20" for="class-privacy">
-                                            <input class="mt-1 h-4 w-4 accent-[#A8B7C7]" id="class-privacy" name="class-privacy" type="checkbox" required>
+                                            <input class="mt-1 h-4 w-4 accent-[#A8B7C7]" id="class-privacy" name="class-privacy" type="checkbox" required aria-describedby="class-privacyError" aria-invalid="false">
                                             <span>Я даю згоду на обробку персональних даних для бронювання та підтвердження запису.</span>
                                         </label>
-                                        <p id="class-privacyError" class="error hidden text-xs font-medium text-[#FF8A8A]">Потрібна згода на обробку персональних даних.</p>
+                                        <p id="class-privacyError" class="error hidden text-xs font-medium text-[#FF8A8A]" role="alert" aria-live="polite">Потрібна згода на обробку персональних даних.</p>
                                     </div>
                                 </div>
                             </fieldset>
