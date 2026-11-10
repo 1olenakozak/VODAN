@@ -7,7 +7,7 @@
     --color-cyan: #00E5FF;
     --color-dark-bg: #0A111E;
     --color-dark-surface: #0D1B2A;
-    --color-light-bg: #F4F8FA;
+    --color-light-bg: #c2eff7;
     --color-text: #F4F8FA;
     --color-text-muted: #A8B7C7;
     --color-border: rgba(244, 248, 250, 0.12);
@@ -85,14 +85,19 @@
 
 :root[data-theme="light"] {
     color-scheme: light;
-    --color-page-bg: var(--color-light-bg);
-    --color-surface: #FFFFFF;
-    --color-surface-raised: #EAF2F5;
-    --color-text-primary: var(--color-navy);
+    --color-navy: #0A111E;
+    --color-turquoise: #0096A5;
+    --color-turquoise-dark: #007985;
+    --color-cyan: #0096A5;
+    --color-light-bg: #DFF0F2;
+    --color-page-bg: #DFF0F2;
+    --color-surface: #F2FBFD;
+    --color-surface-raised: #DDF4F8;
+    --color-text-primary: #0A111E;
     --color-text-secondary: #526273;
-    --color-border-ui: rgba(13, 17, 30, 0.14);
+    --color-border-ui: rgba(10, 17, 30, 0.18);
     --shadow-card-ui: 0 16px 40px rgba(13, 17, 30, 0.12);
-    --color-outline: var(--color-turquoise-dark);
+    --color-outline: #007985;
 }
 
 /* Reset and accessible defaults. */
@@ -382,12 +387,30 @@ h3 {
 }
 
 .theme-switcher::before {
+    display: block;
     width: 18px;
     height: 18px;
     border: 2px solid var(--color-cyan);
     border-radius: var(--radius-circle);
     content: "";
     box-shadow: inset -6px -2px 0 var(--color-cyan);
+}
+
+.theme-switcher[aria-pressed="true"]::before {
+    display: grid;
+    width: auto;
+    height: auto;
+    place-items: center;
+    border: 0;
+    content: "☀";
+    box-shadow: none;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.theme-switcher i {
+    color: var(--color-turquoise);
+    font-size: 1.125rem;
 }
 
 /* Hero and feature highlights. */
@@ -452,6 +475,12 @@ h3 {
     text-align: center;
 }
 
+:root[data-theme="light"] .feature-card {
+    border-color: var(--color-border-ui);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card-ui);
+}
+
 .feature-card strong {
     color: var(--color-cyan);
     font-size: var(--font-size-h3);
@@ -459,7 +488,7 @@ h3 {
 }
 
 .feature-card span {
-    color: var(--color-text);
+    color: var(--color-text-primary);
     font-size: var(--font-size-caption);
 }
 
@@ -553,7 +582,7 @@ h3 {
 
 .video-section {
     padding: 8px 16px 64px;
-    background: var(--color-dark-bg);
+    background: var(--color-page-bg);
 }
 
 .about-section--video-followup {
@@ -562,7 +591,7 @@ h3 {
 
 .video-title {
     margin-bottom: var(--spacing-4);
-    color: var(--color-text);
+    color: var(--color-text-primary);
     text-align: center;
 }
 
@@ -727,15 +756,29 @@ h3 {
     color: var(--color-text-secondary);
 }
 
-.reviews-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-5);
+.reviews-swiper {
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+.reviews-swiper > .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviews-swiper .swiper-slide {
+    min-width: 0;
+    flex-shrink: 0;
 }
 
 .review-card {
     padding: var(--spacing-5);
-    will-change: transform, box-shadow, border-color;
+    transition: background-color var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard);
+}
+
+:root[data-theme="light"] .reviews-section .review-card {
+    border-color: var(--color-border-ui);
+    background: var(--color-surface);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -744,6 +787,12 @@ h3 {
         border-color: rgba(0, 194, 209, 0.9);
         box-shadow: 0 18px 38px rgba(0, 194, 209, 0.18), 0 8px 20px rgba(0, 0, 0, 0.18);
     }
+}
+
+:root[data-theme="light"] .reviews-section .review-card:hover,
+:root[data-theme="light"] .reviews-section .review-card:focus-within {
+    border-color: var(--color-turquoise-dark);
+    box-shadow: 0 18px 38px rgba(0, 150, 165, 0.16), 0 8px 20px rgba(13, 17, 30, 0.1);
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -759,6 +808,36 @@ h3 {
     font-size: var(--font-size-lead);
 }
 
+.reviews-swiper .swiper-pagination {
+    position: static;
+    margin-top: 1rem;
+}
+
+.reviews-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.35);
+    opacity: 1;
+}
+
+.reviews-swiper .swiper-pagination-bullet-active {
+    background: var(--color-turquoise);
+}
+
+:root[data-theme="light"] .reviews-swiper .swiper-pagination-bullet {
+    background: #9AAAB8;
+}
+
+:root[data-theme="light"] .reviews-swiper .swiper-pagination-bullet-active {
+    background: var(--color-turquoise-dark);
+}
+
+@media (min-width: 768px) {
+    .reviews-swiper {
+        padding-inline: 0;
+    }
+}
+
 .review-text {
     margin-top: var(--spacing-3);
     color: var(--color-text-secondary);
@@ -768,6 +847,16 @@ h3 {
     margin-top: var(--spacing-3);
     color: var(--color-cyan);
     letter-spacing: 0.12em;
+}
+
+:root[data-theme="light"] .services-section .service-card {
+    border-color: var(--color-border-ui);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .services-section .service-card .card-title {
+    color: var(--color-turquoise-dark);
 }
 
 /* Footer. */
@@ -951,5 +1040,277 @@ h3 {
     *::after {
         scroll-behavior: auto;
         transition-duration: 0.01ms;
+    }
+}
+
+/* Shared light theme overrides for page-specific and utility-class colors. */
+:root[data-theme="light"] body {
+    background: var(--color-page-bg) !important;
+    color: var(--color-text-primary) !important;
+}
+
+:root[data-theme="light"] body[class~="bg-[#0A111E]"] {
+    background: var(--color-page-bg) !important;
+    color: var(--color-text-primary) !important;
+}
+
+:root[data-theme="light"] .header,
+:root[data-theme="light"] .footer {
+    border-color: var(--color-border-ui);
+    background: var(--color-surface);
+}
+
+:root[data-theme="light"] .header {
+    background: #DFF0F2;
+}
+
+:root[data-theme="light"] .logo {
+    position: relative;
+    display: block;
+    width: 132px;
+    aspect-ratio: 496 / 503;
+    overflow: hidden;
+}
+
+:root[data-theme="light"] .logo img[src$="logolight.svg"] {
+    position: absolute;
+    top: -17.5%;
+    left: -17.15%;
+    width: 132.8%;
+    max-width: none;
+}
+
+@media (max-width: 700px) {
+    :root[data-theme="light"] .logo {
+        width: 108px;
+    }
+}
+
+:root[data-theme="light"] [class~="bg-[#0A111E]"],
+:root[data-theme="light"] [class~="bg-[#0D1B2A]"],
+:root[data-theme="light"] [class~="bg-[#111F30]"],
+:root[data-theme="light"] [class~="bg-vodanBg"],
+:root[data-theme="light"] [class~="bg-vodanCard"] {
+    background-color: var(--color-surface-raised) !important;
+}
+
+:root[data-theme="light"] [class~="bg-white/5"] {
+    background-color: var(--color-surface) !important;
+}
+
+:root[data-theme="light"] [class~="text-[#F4F8FA]"],
+:root[data-theme="light"] [class~="text-white"],
+:root[data-theme="light"] [class~="text-black"],
+:root[data-theme="light"] [class~="text-[#000]"],
+:root[data-theme="light"] [class~="text-[#000000]"],
+:root[data-theme="light"] [class~="text-vodanText"] {
+    color: var(--color-text-primary) !important;
+}
+
+:root[data-theme="light"] [class~="text-[#A8B7C7]"] {
+    color: var(--color-text-secondary) !important;
+}
+
+:root[data-theme="light"] [class~="text-[#00C2D1]"],
+:root[data-theme="light"] [class~="text-vodanAccent"] {
+    color: var(--color-turquoise-dark) !important;
+}
+
+:root[data-theme="light"] [class~="border-white/10"] {
+    border-color: var(--color-border-ui) !important;
+}
+
+:root[data-theme="light"] [class~="bg-[#0A111E]/70"] {
+    background-color: rgba(223, 240, 242, 0.6) !important;
+}
+
+:root[data-theme="light"] .hero-title,
+:root[data-theme="light"] .hero-subtitle {
+    color: #0A111E !important;
+    text-shadow: 0 1px 3px rgba(223, 240, 242, 0.85);
+}
+
+:root[data-theme="light"] .hero-buttons .btn--secondary {
+    border-color: #0A111E;
+    background: #0A111E;
+    color: #FFFFFF;
+}
+
+:root[data-theme="light"] .hero-buttons .btn--secondary:hover,
+:root[data-theme="light"] .hero-buttons .btn--secondary:focus-visible {
+    border-color: #25364E;
+    background: #25364E;
+    color: #FFFFFF;
+}
+
+:root[data-theme="light"] .feature-card {
+    border-color: var(--color-border-ui);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card-ui);
+}
+
+:root[data-theme="light"] .feature-card span,
+:root[data-theme="light"] .schedule-event strong,
+:root[data-theme="light"] .spa-facts dd {
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .video-section {
+    background: var(--color-page-bg);
+}
+
+:root[data-theme="light"] .schedule-scroll {
+    scrollbar-color: var(--color-turquoise-dark) var(--color-surface-raised);
+}
+
+:root[data-theme="light"] .schedule-scroll::-webkit-scrollbar-track {
+    background: var(--color-surface-raised);
+}
+
+:root[data-theme="light"] .schedule-event {
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .choice-day,
+:root[data-theme="light"] .choice-time,
+:root[data-theme="light"] .choice-lane,
+:root[data-theme="light"] .choice-count,
+:root[data-theme="light"] .choice-session,
+:root[data-theme="light"] .choice-slot {
+    border-color: var(--color-border-ui);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .choice-day span,
+:root[data-theme="light"] .choice-lane small,
+:root[data-theme="light"] .choice-session span,
+:root[data-theme="light"] .choice-session small,
+:root[data-theme="light"] .choice-slot small {
+    color: var(--color-text-secondary);
+}
+
+:root[data-theme="light"] .choice-lane b,
+:root[data-theme="light"] .choice-session strong,
+:root[data-theme="light"] .choice-slot b {
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .spa-facts dt {
+    color: var(--color-turquoise-dark);
+}
+
+:root[data-theme="light"] .about-section > a.group > div {
+    border-color: rgba(255, 255, 255, 0.85) !important;
+    background-color: #006f7a !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 6px 18px rgba(10, 17, 30, 0.35);
+}
+
+:root[data-theme="light"] .about-section > a.group:hover > div {
+    background-color: #004f5a !important;
+}
+
+:root[data-theme="light"] .schedule-event--free {
+    border-color: #007985;
+    background: rgba(0, 194, 209, 0.3);
+    color: #06363B;
+}
+
+:root[data-theme="light"] .schedule-event--group {
+    border-color: #7040B5;
+    background: rgba(167, 139, 250, 0.38);
+    color: #2D145D;
+}
+
+:root[data-theme="light"] .schedule-event--individual {
+    border-color: #A86B00;
+    background: rgba(251, 191, 36, 0.42);
+    color: #593900;
+}
+
+:root[data-theme="light"] .schedule-event--free strong,
+:root[data-theme="light"] .schedule-event--free span {
+    color: #06363B;
+}
+
+:root[data-theme="light"] .schedule-event--group strong,
+:root[data-theme="light"] .schedule-event--group span {
+    color: #2D145D;
+}
+
+:root[data-theme="light"] .schedule-event--individual strong,
+:root[data-theme="light"] .schedule-event--individual span {
+    color: #593900;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :root[data-theme="light"] :is(
+        .card,
+        .review-card,
+        .feature-card,
+        .trainer-card,
+        .recommendation-card,
+        .spa-card,
+        .booking-mode-card,
+        .booking-summary-panel,
+        .booking-panel,
+        .summary-card,
+        .schedule-event,
+        .choice-card,
+        .choice-day,
+        .choice-time,
+        .choice-lane,
+        .choice-count,
+        .choice-session,
+        .choice-slot,
+        article[class*="-card"],
+        li[class*="-card"],
+        div[class*="-card"]
+    ) {
+        transition: transform var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard), outline-color var(--transition-standard);
+    }
+
+    :root[data-theme="light"] :is(
+        [class~="bg-[#0D1B2A]"],
+        [class~="bg-vodanCard"],
+        [class~="bg-[#111F30]"],
+        [class~="bg-white/5"]
+    ) {
+        transition: transform var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard), outline-color var(--transition-standard);
+    }
+
+    :root[data-theme="light"] :is(
+        .card,
+        .review-card,
+        .feature-card,
+        .trainer-card,
+        .recommendation-card,
+        .spa-card,
+        .booking-mode-card,
+        .booking-summary-panel,
+        .booking-panel,
+        .summary-card,
+        .schedule-event,
+        .choice-card,
+        .choice-day,
+        .choice-time,
+        .choice-lane,
+        .choice-count,
+        .choice-session,
+        .choice-slot,
+        article[class*="-card"],
+        li[class*="-card"],
+        div[class*="-card"]
+    ):is(:hover, :focus-within),
+    :root[data-theme="light"] [class~="bg-[#0D1B2A]"]:is(:hover, :focus-within),
+    :root[data-theme="light"] [class~="bg-vodanCard"]:is(:hover, :focus-within),
+    :root[data-theme="light"] [class~="bg-[#111F30]"]:is(:hover, :focus-within),
+    :root[data-theme="light"] [class~="bg-white/5"]:is(:hover, :focus-within) {
+        transform: translateY(-4px) !important;
+        border-color: rgba(10, 17, 30, 0.62) !important;
+        outline: 1px solid rgba(10, 17, 30, 0.26);
+        outline-offset: 0;
+        box-shadow: 0 8px 20px rgba(10, 17, 30, 0.12) !important;
     }
 }

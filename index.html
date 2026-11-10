@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/global.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
     <script>
       tailwind.config = {
@@ -76,7 +78,7 @@
                 <a href="#contacts">Контакти</a>
             </nav>
         </details>
-        <button class="theme-switcher" type="button" aria-label="Змінити тему"></button>
+        <button class="theme-switcher" type="button" aria-label="Увімкнути світлу тему" aria-pressed="false"></button>
     </header>
 
     <main class="main-content">
@@ -174,7 +176,14 @@
         </section>
 
         <section class="about-section about-section--video-followup" id="about" aria-labelledby="about-title">
-            <img src="assets/images/whatv.jpg" alt="" class="about-image" aria-hidden="true">
+            <a href="assets/images/whatv1.jpg" data-fancybox="about-gallery" data-caption="Що таке ВОДАН?" class="relative block group cursor-pointer">
+                <img src="assets/images/whatv1.jpg" alt="Спортивно-оздоровчий комплекс ВОДАН" class="about-image">
+                <div class="absolute bottom-4 right-4 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full flex items-center justify-center transition backdrop-blur-sm border border-white/20">
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </div>
+            </a>
+            <a href="assets/images/whatv2.jpg" data-fancybox="about-gallery" data-caption="Водан - Басейн та релакс" class="hidden"></a>
+            <a href="assets/images/whatv3.jpg" data-fancybox="about-gallery" data-caption="Водан - Сучасний простір" class="hidden"></a>
             <div class="about-text-block">
                 <h2 class="section-title" id="about-title">Що таке ВОДАН?</h2>
                 <p class="about-text">Сучасний спортивно-оздоровчий комплекс нового покоління, створений для тих, хто обирає активний спосіб життя, турботу про здоров'я та гармонію душі й тіла.
@@ -208,26 +217,44 @@
             <p class="benefits-subtext">Жодного хаосу — лише спорт і відновлення у вашому ритмі.</p>
         </section>
 
-        <section class="reviews-section" aria-labelledby="reviews-title">
+        <section class="reviews-section py-12" aria-labelledby="reviews-title">
             <h2 class="section-title" id="reviews-title">Відгуки</h2>
             <p class="section-subtitle">Атмосфера, до якої хочеться повертатися</p>
-            <section class="reviews-container" aria-label="Відгуки клієнтів">
-                <article class="review-card transition-all duration-300 ease-out border border-white/10 bg-white/5 hover:-translate-y-2 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400 sm:hover:-translate-y-2 sm:hover:border-cyan-400 sm:hover:shadow-lg sm:hover:shadow-cyan-500/20">
-                    <h3 class="review-author">Олена</h3>
-                    <p class="review-text">Супер</p>
-                    <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
-                </article>
-                <article class="review-card transition-all duration-300 ease-out border border-white/10 bg-white/5 hover:-translate-y-2 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400 sm:hover:-translate-y-2 sm:hover:border-cyan-400 sm:hover:shadow-lg sm:hover:shadow-cyan-500/20">
-                    <h3 class="review-author">Орест</h3>
-                    <p class="review-text">Класно</p>
-                    <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
-                </article>
-                <article class="review-card transition-all duration-300 ease-out border border-white/10 bg-white/5 hover:-translate-y-2 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400 sm:hover:-translate-y-2 sm:hover:border-cyan-400 sm:hover:shadow-lg sm:hover:shadow-cyan-500/20">
-                    <h3 class="review-author">Юля</h3>
-                    <p class="review-text">Клас</p>
-                    <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
-                </article>
-            </section>
+            <div class="swiper reviews-swiper overflow-hidden pb-12">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide w-[350px] md:w-[380px] flex-shrink-0 review-card border border-white/10 bg-white/5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400">
+                        <h3 class="review-author">Олена</h3>
+                        <p class="review-text">Супер</p>
+                        <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                    </div>
+                    <div class="swiper-slide w-[350px] md:w-[380px] flex-shrink-0 review-card border border-white/10 bg-white/5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400">
+                        <h3 class="review-author">Орест</h3>
+                        <p class="review-text">Класно</p>
+                        <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                    </div>
+                    <div class="swiper-slide w-[350px] md:w-[380px] flex-shrink-0 review-card border border-white/10 bg-white/5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400">
+                        <h3 class="review-author">Юля</h3>
+                        <p class="review-text">Клас</p>
+                        <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                    </div>
+                    <div class="swiper-slide w-[350px] md:w-[380px] flex-shrink-0 review-card border border-white/10 bg-white/5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400">
+                        <h3 class="review-author">Максим</h3>
+                        <p class="review-text">Чудовий басейн</p>
+                        <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                    </div>
+                    <div class="swiper-slide w-[350px] md:w-[380px] flex-shrink-0 review-card border border-white/10 bg-white/5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400">
+                        <h3 class="review-author">Софія</h3>
+                        <p class="review-text">Дуже затишно</p>
+                        <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                    </div>
+                    <div class="swiper-slide w-[350px] md:w-[380px] flex-shrink-0 review-card border border-white/10 bg-white/5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 focus-within:border-cyan-400">
+                        <h3 class="review-author">Андрій</h3>
+                        <p class="review-text">Чисто і комфортно</p>
+                        <div class="review-rating" role="img" aria-label="Оцінка: 3 з 3">★★★</div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-4"></div>
+            </div>
         </section>
     </main>
 
@@ -264,6 +291,55 @@
         </section>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox='about-gallery']", {
+            Image: { zoom: true },
+            Panzoom: {
+                maxScale: 4,
+            },
+            Toolbar: {
+                display: {
+                    left: ["infobar"],
+                    middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY"],
+                    right: ["slideshow", "fullscreen", "thumbs", "close"],
+                },
+            },
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.Swiper && document.querySelector(".reviews-swiper")) {
+                new Swiper(".reviews-swiper", {
+                    loop: true,
+                    speed: 700,
+                    autoplay: {
+                        delay: 3500,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        },
+                    },
+                });
+            }
+        });
+    </script>
     <script>
         const poolDropdown = document.querySelector(".nav-dropdown");
 
