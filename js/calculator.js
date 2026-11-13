@@ -9,9 +9,10 @@ if (calculator) {
       solo: 350,
     },
     trainer: {
-      1: 0,
-      2: 60,
-      3: 120,
+      oksana: { name: "Оксана Корновська", price: 0 },
+      taras: { name: "Тарас Сорока", price: 50 },
+      stepan: { name: "Степан Гула", price: 90 },
+      olha: { name: "Ольга Логовська", price: 120 },
     },
     audience: {
       adult: 1,
@@ -64,13 +65,14 @@ if (calculator) {
   const updateCalculator = () => {
     const selectedFormat = valueFor("format") || "group:adult";
     const [formatType, audience] = selectedFormat.split(":");
-    const trainer = Number(valueFor("trainer") || 1);
+    const trainer = valueFor("trainer") || "oksana";
     const visits = Number(valueFor("visits") || 8);
     const term = Number(valueFor("term") || 1);
     const visitPricing = prices.visits[visits];
     const termSurcharge = prices.terms[term].surcharge;
     const isSelf = formatType === "self";
-    const trainerPrice = isSelf ? 0 : prices.trainer[trainer];
+    const selectedTrainer = prices.trainer[trainer];
+    const trainerPrice = isSelf ? 0 : selectedTrainer.price;
     const unitPrice = prices.base * prices.audience[audience]
       + prices.format[formatType]
       + trainerPrice;
@@ -97,7 +99,7 @@ if (calculator) {
     updateSummaryRow("format", formatLabels[selectedFormat], `${currency.format(unitPrice)} / відвідування`);
     updateSummaryRow(
       "trainer",
-      `Тренер ${trainer}`,
+      selectedTrainer.name,
       isSelf ? "Не застосовується" : `${currency.format(trainerPrice)} / відвідування`,
       !isSelf,
     );

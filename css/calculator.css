@@ -3,8 +3,9 @@
     --add-group: 80;
     --add-solo: 350;
     --add-trainer-1: 0;
-    --add-trainer-2: 60;
-    --add-trainer-3: 120;
+    --add-trainer-2: 50;
+    --add-trainer-3: 90;
+    --add-trainer-4: 120;
     --extra-sauna: 300;
     --extra-towel: 120;
     --extra-locker: 90;
@@ -211,6 +212,10 @@
 
 .price-add-trainer-3 {
     --price-label: var(--add-trainer-3);
+}
+
+.price-add-trainer-4 {
+    --price-label: var(--add-trainer-4);
 }
 
 .price-add-sauna {

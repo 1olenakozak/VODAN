@@ -4,11 +4,51 @@
     background: rgba(0, 194, 209, 0.1);
 }
 
+:root[data-theme="light"] #booking-lane:checked ~ #booking-left label[for="booking-lane"],
+:root[data-theme="light"] #booking-class:checked ~ #booking-left label[for="booking-class"] {
+    border-color: #007985 !important;
+    background-color: rgba(0, 194, 209, 0.18) !important;
+}
+
 #booking-lane:focus-visible ~ #booking-left label[for="booking-lane"],
 #booking-class:focus-visible ~ #booking-left label[for="booking-class"],
 .booking-panel input:focus-visible + label {
     outline: 2px solid #00C2D1;
     outline-offset: 2px;
+}
+
+.booking-mode-card {
+    transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.booking-summary-panel {
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :root[data-theme="dark"] .booking-mode-card:is(:hover, :focus-visible) {
+        transform: translateY(-4px);
+        border-color: #00C2D1;
+        box-shadow: 0 0 0 1px rgba(0, 194, 209, 0.35), 0 10px 24px rgba(0, 194, 209, 0.2);
+    }
+
+    :root[data-theme="dark"] .booking-summary-panel:hover {
+        transform: translateY(-4px);
+        border-color: #00C2D1;
+        box-shadow: 0 0 0 1px rgba(0, 194, 209, 0.3), 0 10px 24px rgba(0, 194, 209, 0.18);
+    }
+
+    :root[data-theme="light"] #booking-left .booking-panel:is(:hover, :focus-within),
+    :root[data-theme="light"] #booking-left .booking-panel fieldset,
+    :root[data-theme="light"] #booking-left .booking-panel fieldset:is(:hover, :focus-within) {
+        transform: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: var(--color-border-ui) !important;
+        background-color: var(--color-surface-raised) !important;
+        filter: none !important;
+        transition: none !important;
+    }
 }
 
 .choice-day,
@@ -24,7 +64,22 @@
     border-radius: 8px;
     background: #0A111E;
     color: #F4F8FA;
-    transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease;
+    transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :root[data-theme="dark"] .booking-panel input[type="radio"]:not(:disabled) + label:is(
+        .choice-day,
+        .choice-time,
+        .choice-lane:not(.choice-lane--busy),
+        .choice-count,
+        .choice-session,
+        .choice-slot
+    ):is(:hover, :focus-visible) {
+        transform: translateY(-4px);
+        border-color: #00C2D1;
+        box-shadow: 0 0 0 1px rgba(0, 194, 209, 0.3), 0 8px 18px rgba(0, 194, 209, 0.18);
+    }
 }
 
 .choice-day,

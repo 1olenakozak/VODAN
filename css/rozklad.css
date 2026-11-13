@@ -3,6 +3,136 @@
     scrollbar-width: thin;
 }
 
+.schedule-info-card {
+    border: 1px solid var(--color-border-ui);
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid var(--color-border-ui);
+    transition: none;
+}
+
+.schedule-table thead th,
+.schedule-table tbody th {
+    background: var(--color-surface-raised);
+    color: var(--color-text-primary);
+}
+
+.schedule-table thead,
+.schedule-table thead tr,
+.schedule-table thead th {
+    background-color: #0D1B2A !important;
+}
+
+:root[data-theme="light"] .schedule-table thead,
+:root[data-theme="light"] .schedule-table thead tr,
+:root[data-theme="light"] .schedule-table thead th {
+    background-color: var(--color-surface-raised) !important;
+}
+
+:root[data-theme="dark"] .schedule-scroll .schedule-table thead,
+:root[data-theme="dark"] .schedule-scroll .schedule-table thead tr,
+:root[data-theme="dark"] .schedule-scroll .schedule-table thead th,
+:root[data-theme="dark"] .schedule-scroll .schedule-table tbody th {
+    background-color: #0D1B2A !important;
+}
+
+.schedule-table th {
+    cursor: default;
+}
+
+.schedule-table tbody tr,
+.schedule-table tbody td {
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.schedule-table thead tr,
+.schedule-table thead th,
+.schedule-table tbody tr,
+.schedule-table tbody th,
+.schedule-table tbody td,
+:root[data-theme] .schedule-scroll .schedule-table thead tr:hover,
+:root[data-theme] .schedule-scroll .schedule-table thead tr:hover > th,
+:root[data-theme] .schedule-scroll .schedule-table thead th:hover,
+:root[data-theme] .schedule-scroll .schedule-table thead th:active,
+:root[data-theme] .schedule-scroll .schedule-table tbody tr:hover,
+:root[data-theme] .schedule-scroll .schedule-table tbody tr:hover > th,
+:root[data-theme] .schedule-scroll .schedule-table tbody tr:hover > td,
+:root[data-theme] .schedule-scroll .schedule-table tbody th:hover,
+:root[data-theme] .schedule-scroll .schedule-table tbody td:hover {
+    border-color: var(--color-border-ui) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+:root[data-theme="dark"] .schedule-table thead tr:hover,
+:root[data-theme="dark"] .schedule-table thead tr:hover > th,
+:root[data-theme="dark"] .schedule-table thead th:hover,
+:root[data-theme="dark"] .schedule-table tbody th:hover {
+    background-color: #0D1B2A !important;
+}
+
+:root[data-theme="light"] .schedule-table thead tr:hover,
+:root[data-theme="light"] .schedule-table thead tr:hover > th,
+:root[data-theme="light"] .schedule-table thead th:hover {
+    background-color: var(--color-surface-raised) !important;
+}
+
+:root[data-theme="dark"] .schedule-scroll:hover,
+:root[data-theme="light"] .schedule-scroll:hover {
+    transform: none !important;
+    border-color: var(--color-border-ui) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.schedule-scroll:focus-visible {
+    outline: 3px solid var(--color-outline);
+    outline-offset: 3px;
+}
+
+.schedule-table th {
+    transition: none !important;
+}
+
+:root[data-theme="dark"] .schedule-table th:hover,
+:root[data-theme="light"] .schedule-table th:hover {
+    transform: none !important;
+    border-color: var(--color-border-ui) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    cursor: default;
+    transition: none !important;
+}
+
+.schedule-info-card,
+.schedule-event {
+    transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :root[data-theme="dark"] article.schedule-info-card:is(:hover, :focus-within),
+    :root[data-theme="dark"] .schedule-event:is(:hover, :focus-within),
+    :root[data-theme="light"] article.schedule-info-card:is(:hover, :focus-within),
+    :root[data-theme="light"] .schedule-event:is(:hover, :focus-within) {
+        z-index: 2;
+        transform: translateY(-4px);
+        border-color: var(--color-turquoise);
+        box-shadow: 0 10px 24px rgba(0, 194, 209, 0.2);
+    }
+
+    :root[data-theme="light"] article.schedule-info-card:is(:hover, :focus-within),
+    :root[data-theme="light"] .schedule-event:is(:hover, :focus-within) {
+        border-color: var(--color-turquoise-dark);
+        box-shadow: 0 10px 24px rgba(0, 150, 165, 0.2);
+    }
+}
+
 .schedule-scroll::-webkit-scrollbar {
     height: 8px;
 }
@@ -22,7 +152,8 @@
     flex-direction: column;
     gap: 4px;
     padding: 8px;
-    border-left: 2px solid;
+    border: 1px solid var(--color-border-ui);
+    border-left-width: 3px;
     border-radius: 6px;
     font-size: 0.75rem;
     line-height: 1.35;
@@ -39,16 +170,31 @@
 }
 
 .schedule-event--free {
-    border-color: #00C2D1;
+    border-left-color: #00C2D1;
     background: rgba(0, 194, 209, 0.1);
 }
 
 .schedule-event--group {
-    border-color: #A78BFA;
+    border-left-color: #A78BFA;
     background: rgba(167, 139, 250, 0.1);
 }
 
 .schedule-event--individual {
-    border-color: #FBBF24;
+    border-left-color: #FBBF24;
     background: rgba(251, 191, 36, 0.1);
+}
+
+:root[data-theme="light"] .schedule-event.schedule-event--free {
+    border-color: var(--color-border-ui);
+    border-left-color: #007985;
+}
+
+:root[data-theme="light"] .schedule-event.schedule-event--group {
+    border-color: var(--color-border-ui);
+    border-left-color: #7040B5;
+}
+
+:root[data-theme="light"] .schedule-event.schedule-event--individual {
+    border-color: var(--color-border-ui);
+    border-left-color: #A86B00;
 }
