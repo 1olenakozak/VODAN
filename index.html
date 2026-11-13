@@ -6,6 +6,22 @@
     <meta name="description" content="Спортивно-оздоровчий комплекс ВОДАН: басейн, SPA, абонементи та онлайн-бронювання.">
     <title>ВОДАН — Спортивно-оздоровчий комплекс</title>
 
+    <script>
+        (() => {
+            let theme = "dark";
+            try {
+                theme = localStorage.getItem("vodan-theme") === "light" ? "light" : "dark";
+            } catch (error) {
+                console.warn("Не вдалося прочитати збережену тему; використовується темна тема.", error);
+            }
+
+            const root = document.documentElement;
+            root.dataset.theme = theme;
+            root.classList.toggle("dark", theme === "dark");
+            root.classList.toggle("light-theme", theme === "light");
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
