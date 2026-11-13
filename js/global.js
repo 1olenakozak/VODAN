@@ -6,6 +6,7 @@ const applyTheme = (theme) => {
   rootElement.dataset.theme = isLight ? "light" : "dark";
   rootElement.classList.toggle("light-theme", isLight);
   document.body?.classList.toggle("light-theme", isLight);
+  document.body?.classList.toggle("bg-[#0A111E]", !isLight);
 
   document.querySelectorAll(".theme-switcher").forEach((button) => {
     button.setAttribute("aria-label", isLight ? "Увімкнути темну тему" : "Увімкнути світлу тему");
