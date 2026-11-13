@@ -1,6 +1,7 @@
 .schedule-scroll {
     scrollbar-color: #00C2D1 #0D1B2A;
     scrollbar-width: thin;
+    transition: none !important;
 }
 
 .schedule-info-card {
@@ -83,12 +84,24 @@
     background-color: var(--color-surface-raised) !important;
 }
 
-:root[data-theme="dark"] .schedule-scroll:hover,
+:root[data-theme="dark"] .schedule-scroll:hover {
+    transform: none !important;
+    border-color: var(--color-border-ui) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: #0D1B2A !important;
+    opacity: 1 !important;
+    transition: none !important;
+}
+
 :root[data-theme="light"] .schedule-scroll:hover {
     transform: none !important;
     border-color: var(--color-border-ui) !important;
     box-shadow: none !important;
     outline: none !important;
+    background-color: var(--color-surface-raised) !important;
+    opacity: 1 !important;
+    transition: none !important;
 }
 
 .schedule-scroll:focus-visible {
