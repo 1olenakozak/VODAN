@@ -219,7 +219,7 @@
 
     const text = document.createElement('p');
     text.id = 'success-modal-description';
-    text.className = 'mt-4 text-base leading-relaxed text-[#D9E3EF]';
+    text.className = 'mt-4 text-base leading-relaxed text-[#A8B7C7]';
     text.textContent = 'Дякуємо! Ваше повідомлення успішно надіслано.';
 
     const closeButton = document.createElement('button');

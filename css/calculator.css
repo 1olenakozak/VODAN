@@ -249,6 +249,14 @@
     gap: var(--calc-gap);
 }
 
+@media (hover: hover) and (pointer: fine) {
+    :root[data-theme="dark"] .summary-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--color-turquoise);
+        box-shadow: 0 0 0 1px rgba(0, 194, 209, 0.3), 0 10px 24px rgba(0, 194, 209, 0.18);
+    }
+}
+
 .summary-title {
     font-size: var(--font-size-h3);
 }

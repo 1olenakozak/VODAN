@@ -488,6 +488,28 @@
             throw new Error("Не обрано заняття для підсумку.");
         }
         updateClassSummary(selectedClass);
+
+        [
+            { input: "lane-name", output: "lane-summary-name" },
+            { input: "lane-phone", output: "lane-summary-phone" },
+            { input: "lane-email", output: "lane-summary-email" },
+            { input: "class-name", output: "class-summary-name" },
+            { input: "class-phone", output: "class-summary-phone" },
+            { input: "class-email", output: "class-summary-email" },
+        ].forEach(({ input, output }) => {
+            const field = document.getElementById(input);
+            const summary = document.getElementById(output);
+            if (!(field instanceof HTMLInputElement) || !(summary instanceof HTMLElement)) {
+                throw new Error(`Не вдалося синхронізувати поле «${input}» з підсумком бронювання.`);
+            }
+
+            const updateContactSummary = () => {
+                summary.textContent = field.value.trim() || "—";
+            };
+
+            field.addEventListener("input", updateContactSummary);
+            updateContactSummary();
+        });
     </script>
 </body>
 </html>
