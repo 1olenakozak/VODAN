@@ -1,15 +1,3 @@
-@property --per-visit {
-    syntax: "<integer>";
-    inherits: true;
-    initial-value: 0;
-}
-
-@property --total {
-    syntax: "<integer>";
-    inherits: true;
-    initial-value: 0;
-}
-
 :root {
     --price-base: 150;
     --add-group: 80;
@@ -51,19 +39,6 @@
 }
 
 .calc-form {
-    --fmt-add: 0;
-    --aud-pct: 100;
-    --trainer-add: var(--add-trainer-1);
-    --visits: 8;
-    --term-pct: 100;
-    --disc-pct: 5;
-    --sauna-sum: 0;
-    --towel-sum: 0;
-    --locker-sum: 0;
-    --freeze-sum: 0;
-    --extras-sum: calc(var(--sauna-sum) + var(--towel-sum) + var(--locker-sum) + var(--freeze-sum));
-    --per-visit: calc(var(--price-base) * var(--aud-pct) / 100 + var(--fmt-add) + var(--trainer-add));
-    --total: calc(var(--per-visit) * var(--visits) * var(--term-pct) / 100 * (100 - var(--disc-pct)) / 100 + var(--extras-sum));
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(var(--calc-summary-width), 0.75fr);
     align-items: start;
@@ -284,11 +259,6 @@
     font-weight: var(--font-weight-bold);
 }
 
-.price-base::before {
-    counter-reset: base-price var(--price-base);
-    content: counter(base-price) " ₴ / відвідування";
-}
-
 .summary-list {
     display: grid;
     gap: var(--calc-option-space-small);
@@ -300,6 +270,19 @@
 
 .summary-row {
     display: none;
+    justify-content: space-between;
+    gap: var(--calc-option-space);
+}
+
+.summary-row.is-visible {
+    display: flex;
+}
+
+.summary-value {
+    flex: 0 0 auto;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    text-align: right;
 }
 
 .summary-total-label {
@@ -314,19 +297,13 @@
     font-weight: var(--font-weight-bold);
 }
 
-.price-total::before {
-    counter-reset: total var(--total);
-    content: counter(total) " ₴";
-}
-
 .price-per-visit {
     color: var(--color-text-secondary);
     font-size: var(--font-size-caption);
 }
 
 .price-per-visit::before {
-    counter-reset: per-visit var(--per-visit);
-    content: "≈ " counter(per-visit) " ₴ за відвідування";
+    content: "≈ ";
 }
 
 .date-label {
@@ -376,165 +353,47 @@
     color: var(--color-text-secondary);
 }
 
-.confirm-disabled,
-.confirm-link {
+.confirm-button {
     width: 100%;
 }
 
-.calc-form .confirm-link {
+.confirmation-error {
+    margin: calc(-1 * var(--calc-option-space-small)) 0 var(--calc-gap);
+    color: #ff7777;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-medium);
+}
+
+.confirmation-error[hidden] {
     display: none;
-}
-
-.calc-form:has(#agree:checked) .confirm-disabled {
-    display: none;
-}
-
-.calc-form:has(#agree:checked) .confirm-link {
-    display: inline-flex;
-}
-
-.calc-form:has(input[name="format"][value^="self"]:checked) .trainer-step {
-    display: none;
-}
-
-.calc-form:has(input[name="format"][value^="self"]:checked) .time-group {
-    display: none;
-}
-
-.calc-form:has(#fmt-self-adult:checked) {
-    --fmt-add: 0;
-    --aud-pct: 100;
-}
-
-.calc-form:has(#fmt-self-kids:checked) {
-    --fmt-add: 0;
-    --aud-pct: 90;
-}
-
-.calc-form:has(#fmt-group-adult:checked) {
-    --fmt-add: var(--add-group);
-    --aud-pct: 100;
-}
-
-.calc-form:has(#fmt-group-kids:checked) {
-    --fmt-add: var(--add-group);
-    --aud-pct: 90;
-}
-
-.calc-form:has(#fmt-solo-adult:checked) {
-    --fmt-add: var(--add-solo);
-    --aud-pct: 100;
-}
-
-.calc-form:has(#fmt-solo-kids:checked) {
-    --fmt-add: var(--add-solo);
-    --aud-pct: 90;
-}
-
-.calc-form:has(#trainer-1:checked) {
-    --trainer-add: var(--add-trainer-1);
-}
-
-.calc-form:has(#trainer-2:checked) {
-    --trainer-add: var(--add-trainer-2);
-}
-
-.calc-form:has(#trainer-3:checked) {
-    --trainer-add: var(--add-trainer-3);
-}
-
-.calc-form:has(#fmt-self-adult:checked, #fmt-self-kids:checked) {
-    --trainer-add: 0;
-}
-
-.calc-form:has(#visits-4:checked) {
-    --visits: 4;
-    --disc-pct: 0;
-}
-
-.calc-form:has(#visits-8:checked) {
-    --visits: 8;
-    --disc-pct: 5;
-}
-
-.calc-form:has(#visits-12:checked) {
-    --visits: 12;
-    --disc-pct: 10;
-}
-
-.calc-form:has(#visits-24:checked) {
-    --visits: 24;
-    --disc-pct: 15;
-}
-
-.calc-form:has(#term-1:checked) {
-    --term-pct: 100;
-}
-
-.calc-form:has(#term-2:checked) {
-    --term-pct: 105;
-}
-
-.calc-form:has(#term-3:checked) {
-    --term-pct: 109;
-}
-
-.calc-form:has(#extra-sauna:checked) {
-    --sauna-sum: var(--extra-sauna);
-}
-
-.calc-form:has(#extra-towel:checked) {
-    --towel-sum: var(--extra-towel);
-}
-
-.calc-form:has(#extra-locker:checked) {
-    --locker-sum: var(--extra-locker);
-}
-
-.calc-form:has(#extra-freeze:checked) {
-    --freeze-sum: var(--extra-freeze);
-}
-
-.calc-form:has(#fmt-self-adult:checked) .sum-format-self-adult,
-.calc-form:has(#fmt-self-kids:checked) .sum-format-self-kids,
-.calc-form:has(#fmt-group-adult:checked) .sum-format-group-adult,
-.calc-form:has(#fmt-group-kids:checked) .sum-format-group-kids,
-.calc-form:has(#fmt-solo-adult:checked) .sum-format-solo-adult,
-.calc-form:has(#fmt-solo-kids:checked) .sum-format-solo-kids,
-.calc-form:has(#visits-4:checked) .sum-visits-4,
-.calc-form:has(#visits-8:checked) .sum-visits-8,
-.calc-form:has(#visits-12:checked) .sum-visits-12,
-.calc-form:has(#visits-24:checked) .sum-visits-24,
-.calc-form:has(#term-1:checked) .sum-term-1,
-.calc-form:has(#term-2:checked) .sum-term-2,
-.calc-form:has(#term-3:checked) .sum-term-3,
-.calc-form:has(#extra-sauna:checked) .sum-extra-sauna,
-.calc-form:has(#extra-towel:checked) .sum-extra-towel,
-.calc-form:has(#extra-locker:checked) .sum-extra-locker,
-.calc-form:has(#extra-freeze:checked) .sum-extra-freeze {
-    display: list-item;
-}
-
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#trainer-1:checked) .sum-trainer-1,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#trainer-2:checked) .sum-trainer-2,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#trainer-3:checked) .sum-trainer-3,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-07:checked) .sum-time-07,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-10:checked) .sum-time-10,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-14:checked) .sum-time-14,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-18:checked) .sum-time-18,
-.calc-form:not(:has(input[name="format"][value^="self"]:checked)):has(#time-20:checked) .sum-time-20 {
-    display: list-item;
 }
 
 .confirmation {
     display: none;
     gap: var(--calc-gap);
-    padding-top: var(--calc-option-space);
-    border-top: var(--calc-border-width) solid var(--color-border-ui);
+    padding: var(--calc-option-space);
+    border: var(--calc-border-width) solid var(--color-border-ui);
+    border-radius: var(--calc-border-radius);
+    background: var(--color-surface-raised);
+    color: var(--color-text-primary);
 }
 
-.confirmation:target {
+.calc-form[data-confirmed="true"] .confirmation {
     display: grid;
+}
+
+.calc-form[data-confirmed="true"] {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.calc-form[data-confirmed="true"] .form-steps {
+    display: none;
+}
+
+.calc-form[data-confirmed="true"] .summary-card {
+    position: static;
+    width: min(100%, 640px);
+    margin-inline: auto;
 }
 
 .confirmation-title {
@@ -584,4 +443,37 @@
     .form-step {
         padding: var(--calc-option-space-small);
     }
+}
+
+.trainer-step[hidden],
+.time-group[hidden] {
+    display: none;
+}
+
+:root[data-theme="light"] body {
+    background: #e6f4f7 !important;
+}
+
+:root[data-theme="light"] .form-step,
+:root[data-theme="light"] .confirm-step,
+:root[data-theme="light"] .summary-card {
+    background: #e6f4f7;
+}
+
+:root[data-theme="light"] .choice-card,
+:root[data-theme="light"] .time-chip,
+:root[data-theme="light"] .agreement,
+:root[data-theme="light"] .date-input,
+:root[data-theme="light"] .pool-notice {
+    background: #f5fbfc;
+}
+
+:root[data-theme="light"] .choice-card:has(.choice-input:checked),
+:root[data-theme="light"] .time-chip:has(.choice-input:checked),
+:root[data-theme="light"] .agreement:has(.choice-input:checked) {
+    background: #d3edf1;
+}
+
+:root[data-theme="light"] .confirmation-error {
+    color: #b42318;
 }
